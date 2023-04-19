@@ -2,12 +2,7 @@
 
 class AddColorService : IAddColorService
 {
-	private readonly ILogger _logger;
-	public AddColorService(ILogger logger)
-	{
-		_logger = logger;
-	}
-	public void AddColor(int value)
+	public void AddColor(ILogger logger,int value)
 	{
 		ConsoleColor color;
 
@@ -69,7 +64,7 @@ class AddColorService : IAddColorService
 		}
 
 		Console.ForegroundColor = color;
-		_logger.Write(value.ToString());
+		logger.Write(value.ToString());
 		Console.ResetColor();
 	}
 }

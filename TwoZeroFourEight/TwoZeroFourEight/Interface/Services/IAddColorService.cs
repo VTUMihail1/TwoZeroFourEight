@@ -1,4 +1,6 @@
-﻿public interface IAddColorService
+﻿using TwoZeroFourEight.Logger.Interface;
+
+public interface IAddColorService
 {
-	void AddColor(int value);
+	void AddColor(ILogger logger, int value);
 }

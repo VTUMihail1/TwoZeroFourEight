@@ -36,7 +36,7 @@ class TZFEPrint : ITZFEPrint
 			_logger.Write("|  ");
 			for (int j = 0; j < _size; j++)
 			{
-				_color.AddColor(_array[i, j]);
+				_color.AddColor(_logger,_array[i, j]);
 				_logger.Write("  |  ");
 			}
 			_logger.WriteLine("");
