@@ -1,14 +1,17 @@
-﻿
-using TwoZeroFourEight.Logger.Interface;
+﻿using TwoZeroFourEight.Logger.Interface;
 using TwoZeroFourEight.TwoZeroFourEight.Interface;
 
 class TZFEPrint : ITZFEPrint
 {
 	private readonly ILogger _logger;
+	private readonly IAddColorService _color;
+	private readonly int _size;
 	private int[,] _array;
-    public TZFEPrint(ILogger logger)
+    public TZFEPrint(ILogger logger, IAddColorService color)
     {
 		_logger = logger;
+		_color = color;
+		_size = 4;
     }
 	public void GetArrayRef(int[,] array)
 	{
@@ -23,17 +26,18 @@ class TZFEPrint : ITZFEPrint
 							  "Press R to restart the game\n" +
 							  "Press ESC to exit\n");
 	}
-	public void PrintBoard(int score)
+	public void PrintBoard()
 	{
 		_logger.Clear();
-		_logger.WriteLine($"2048 GAME        SCORE: {score}\n");
-		for (int i = 0; i < 4; i++)
+		_logger.WriteLine($"2048 GAME\n");
+		for (int i = 0; i < _size; i++)
 		{
 			_logger.WriteLine(new string('-', 25));
 			_logger.Write("|  ");
-			for (int j = 0; j < 4; j++)
+			for (int j = 0; j < _size; j++)
 			{
-				_logger.Write(_array[i, j] + "  |  ");
+				_color.AddColor(_array[i, j]);
+				_logger.Write("  |  ");
 			}
 			_logger.WriteLine("");
 		}

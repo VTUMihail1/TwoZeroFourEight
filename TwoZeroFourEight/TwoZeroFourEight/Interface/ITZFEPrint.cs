@@ -9,7 +9,7 @@ namespace TwoZeroFourEight.TwoZeroFourEight.Interface
     public interface ITZFEPrint : IGetArray
     {
         void PrintMenu();
-        void PrintBoard(int score);
+        void PrintBoard();
 
 	}
 }
