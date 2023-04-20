@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TwoZeroFourEight.TwoZeroFourEight.Interface
 {
-	public interface ITZFE
+	public interface ITZFESetup
 	{
-		void Start();
+		void Setup();
 	}
 }

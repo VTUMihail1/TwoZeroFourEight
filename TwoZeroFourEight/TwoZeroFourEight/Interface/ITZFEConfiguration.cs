@@ -1,8 +1,7 @@
 ﻿using System;
 using TwoZeroFourEight.TwoZeroFourEight.Interface;
 
-public interface ITZFEStartUp
+public interface ITZFEConfiguration
 {
-	void Run();
-	int[,] Configuration();
+	void Run(int[,] array);
 }

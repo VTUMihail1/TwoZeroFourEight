@@ -1,51 +1,42 @@
 ﻿using TwoZeroFourEight.TwoZeroFourEight.Interface.Services;
 
-class TZFEStartUp : ITZFEStartUp
+class TZFEConfiguration : ITZFEConfiguration
 {
 	private readonly ITZFEMoves _moves;
 	private readonly IRestartGameService _restart;
 	private readonly IAddRandomService _add;
 	private readonly IYouLostService _lostChecker;
-	private readonly int _size;
-	private int[,] _array;
-	public TZFEStartUp(ITZFEMoves moves, IRestartGameService restart, IAddRandomService add, IYouLostService lostChecker)
+	public TZFEConfiguration(ITZFEMoves moves, IRestartGameService restart, IAddRandomService add, IYouLostService lostChecker)
 	{
 		_add = add;
 		_moves = moves;
 		_restart = restart;
 		_lostChecker = lostChecker;
-		_size = 4;
 	}
-	public int[,] Configuration()
-	{
-		_array = new int[_size, _size];
-		_add.AddRandom(_array);
-		return _array;
-	}
-	public void Run()
+	public void Run(int[,] array)
 	{
 		
 		var key = Console.ReadKey();
 
 		if (key.Key == ConsoleKey.RightArrow)
 		{
-			_moves.Right(_array);
+			_moves.Right(array);
 		}
 		else if (key.Key == ConsoleKey.LeftArrow)
 		{
-			_moves.Left(_array);
+			_moves.Left(array);
 		}
 		else if (key.Key == ConsoleKey.UpArrow)
 		{
-			_moves.Up(_array);
+			_moves.Up(array);
 		}
 		else if (key.Key == ConsoleKey.DownArrow)
 		{
-			_moves.Down(_array);
+			_moves.Down(array);
 		}
 		else if (key.Key == ConsoleKey.R)
 		{
-			_restart.RestartGame(_array);
+			_restart.RestartGame(array);
 		}
 		else if (key.Key == ConsoleKey.Escape)
 		{
@@ -56,10 +47,10 @@ class TZFEStartUp : ITZFEStartUp
 			return;
 		}
 		
-		if (_lostChecker.YouLost(_array))
+		if (_lostChecker.YouLost(array))
 		{
-			_restart.RestartGame(_array);
+			_restart.RestartGame(array);
 		}
-		_add.AddRandom(_array);
+		_add.AddRandom(array);
 	}
 }

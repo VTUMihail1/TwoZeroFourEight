@@ -2,6 +2,6 @@
 using TwoZeroFourEight.TwoZeroFourEight.Interface;
 
 IKernel kernel = new StandardKernel(new TZFEModule());
-ITZFE tzfe = kernel.Get<ITZFE>();
+ITZFESetup tzfe = kernel.Get<ITZFESetup>();
 
-tzfe.Start();
+tzfe.Setup();

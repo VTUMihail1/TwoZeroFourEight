@@ -11,6 +11,7 @@ public class TZFEModule : NinjectModule
 	public override void Load()
 	{
 		Bind<Random>().ToSelf();
+		Bind<ITZFEBoard>().To<TZFEBoard>();
 		Bind<IAddColorService>().To<AddColorService>();
 		Bind<ILogger>().To<Logger>();
 		Bind<IAddRandomService>().To<AddRandomService>();
@@ -18,7 +19,7 @@ public class TZFEModule : NinjectModule
 		Bind<IYouLostService>().To<YouLostService>();
 		Bind<ITZFEPrint>().To<TZFEPrint>();
 		Bind<ITZFEMoves>().To<TZFEMoves>();
-		Bind<ITZFEStartUp>().To<TZFEStartUp>();
-		Bind<ITZFE>().To<TZFE>();
+		Bind<ITZFEConfiguration>().To<TZFEConfiguration>();
+		Bind<ITZFESetup>().To<TZFESetup>();
 	}
 }
