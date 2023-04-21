@@ -1,7 +1,6 @@
 ﻿using Ninject;
-using TwoZeroFourEight.TwoZeroFourEight.Interface;
 
 IKernel kernel = new StandardKernel(new TZFEModule());
-ITZFESetup tzfe = kernel.Get<ITZFESetup>();
+ITZFEGame tzfe = kernel.Get<ITZFEGame>();
 
-tzfe.Setup();
+tzfe.Start();

@@ -13,13 +13,12 @@ class TZFESetup : ITZFESetup
         _print = print;
         _board = board;
         _array = _board.InitialiseBoard(4);
-		_print.GetArrayRef(_array);
 	}
     public void Setup()
     {
         while (true)
         {
-            _print.PrintBoard();
+            _print.PrintBoard(_array);
             _print.PrintMenu();
             _config.Run(_array);
         }

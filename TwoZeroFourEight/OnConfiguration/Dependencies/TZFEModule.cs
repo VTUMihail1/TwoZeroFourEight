@@ -1,6 +1,4 @@
-﻿using Ninject;
-using Ninject.Modules;
-using System;
+﻿using Ninject.Modules;
 using TwoZeroFourEight.Logger.Class;
 using TwoZeroFourEight.Logger.Interface;
 using TwoZeroFourEight.TwoZeroFourEight.Interface;
@@ -12,6 +10,8 @@ public class TZFEModule : NinjectModule
 	{
 		Bind<Random>().ToSelf();
 		Bind<ITZFEBoard>().To<TZFEBoard>();
+		Bind<ITZFEScore>().To<TZFEScore>();
+		Bind<ITZFEGame>().To<TZFEGame>();
 		Bind<IAddColorService>().To<AddColorService>();
 		Bind<ILogger>().To<Logger>();
 		Bind<IAddRandomService>().To<AddRandomService>();

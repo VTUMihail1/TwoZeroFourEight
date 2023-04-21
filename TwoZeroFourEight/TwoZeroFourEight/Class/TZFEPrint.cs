@@ -5,18 +5,13 @@ class TZFEPrint : ITZFEPrint
 {
 	private readonly ILogger _logger;
 	private readonly IAddColorService _color;
-	private readonly int _size;
-	private int[,] _array;
-    public TZFEPrint(ILogger logger, IAddColorService color)
+	private readonly ITZFEScore _score;
+    public TZFEPrint(ILogger logger, IAddColorService color, ITZFEScore score)
     {
 		_logger = logger;
 		_color = color;
-		_size = 4;
+		_score = score;
     }
-	public void GetArrayRef(int[,] array)
-	{
-		_array = array;
-	}
 	public void PrintMenu()
 	{
 		_logger.WriteLine("\n\nPress UP ARROW to swipe up\n" +
@@ -26,21 +21,29 @@ class TZFEPrint : ITZFEPrint
 							  "Press R to restart the game\n" +
 							  "Press ESC to exit\n");
 	}
-	public void PrintBoard()
+	public void PrintBoard(int[,] array)
 	{
-		_logger.Clear();
-		_logger.WriteLine($"2048 GAME\n");
-		for (int i = 0; i < _size; i++)
+		if(array.Cast<int>().All(tile => tile == 0))
 		{
-			_logger.WriteLine(new string('-', 25));
-			_logger.Write("|  ");
-			for (int j = 0; j < _size; j++)
-			{
-				_color.AddColor(_logger,_array[i, j]);
-				_logger.Write("  |  ");
-			}
-			_logger.WriteLine("");
+			_logger.WriteLine("\n\n\n\n      PRESS SPACE\n       TO START\n\n\n\n\n");
 		}
-		_logger.WriteLine(new string('-', 25));
+		else
+		{
+			_logger.Clear();
+			_logger.WriteLine($"2048 GAME       SCORE: {_score.ScoreCalculator(array)}\n");
+			for (int i = 0; i < 4; i++)
+			{
+				_logger.WriteLine(new string('-', 25));
+				_logger.Write("|  ");
+				for (int j = 0; j < 4; j++)
+				{
+					_color.AddColor(_logger, array[i, j]);
+					_logger.Write("  |  ");
+				}
+				_logger.WriteLine("");
+			}
+			_logger.WriteLine(new string('-', 25));
+		}
+		
 	}
 }

@@ -42,7 +42,7 @@ class TZFEConfiguration : ITZFEConfiguration
 		{
 			Environment.Exit(1);
 		}
-		else
+		else if(key.Key != ConsoleKey.Spacebar)
 		{
 			return;
 		}

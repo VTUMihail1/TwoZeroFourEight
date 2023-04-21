@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TwoZeroFourEight.TwoZeroFourEight.Interface
 {
-    public interface ITZFEPrint : IGetArray
+    public interface ITZFEPrint
     {
         void PrintMenu();
-        void PrintBoard();
+        void PrintBoard(int[,] array);
 
 	}
 }
