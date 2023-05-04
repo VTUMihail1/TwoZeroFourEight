@@ -6,10 +6,11 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 	{
 		public int ScoreCalculator(int[,] array)
 		{
+			int size = array.GetLength(0);
 			int score = 0;
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < size; i++)
 			{
-				for (int j = 0; j < 4; j++)
+				for (int j = 0; j < size; j++)
 				{
 					int multiplier = 1;
 					int current = array[i, j];

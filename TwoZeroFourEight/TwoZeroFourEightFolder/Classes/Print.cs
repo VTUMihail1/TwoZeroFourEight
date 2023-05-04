@@ -26,7 +26,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		}
 		public void PrintBoard(int[,] array)
 		{
-			int size = 4;
+			int size = array.GetLength(0);
 			int score = _score.ScoreCalculator(array);
 			_logger.Clear();
 			_logger.WriteLine($"2048 GAME       SCORE: {score}\n");
@@ -34,7 +34,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			{
 				for (int i = 0; i < size; i++)
 				{
-					_logger.WriteLine(new string('-', 25));
+					_logger.WriteLine("-------------------------");
 					_logger.Write("|  ");
 					for (int j = 0; j < size; j++)
 					{
@@ -43,8 +43,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 					}
 					_logger.WriteLine("");
 				}
-				_logger.WriteLine(new string('-', 25));
-				
+				_logger.WriteLine("-------------------------");
             }
 			else
 			{
