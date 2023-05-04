@@ -13,6 +13,8 @@ public class TZFEModule : NinjectModule
 		Bind<ITZFEScore>().To<TZFEScore>();
 		Bind<ITZFEGame>().To<TZFEGame>();
 		Bind<IAddColorService>().To<AddColorService>();
+		Bind<ITZFEMovesManager>().To<TZFEMovesManager>();
+		Bind<ITZFEServices>().To<TZFEServices>();
 		Bind<ILogger>().To<Logger>();
 		Bind<IAddRandomService>().To<AddRandomService>();
 		Bind<IRestartGameService>().To<RestartGameService>();

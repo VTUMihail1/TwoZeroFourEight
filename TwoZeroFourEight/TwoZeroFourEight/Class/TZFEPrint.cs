@@ -23,27 +23,20 @@ class TZFEPrint : ITZFEPrint
 	}
 	public void PrintBoard(int[,] array)
 	{
-		if(array.Cast<int>().All(tile => tile == 0))
+		_logger.Clear();
+		_logger.WriteLine($"2048 GAME       SCORE: {_score.ScoreCalculator(array)}\n");
+		for (int i = 0; i < 4; i++)
 		{
-			_logger.WriteLine("\n\n\n\n      PRESS SPACE\n       TO START\n\n\n\n\n");
-		}
-		else
-		{
-			_logger.Clear();
-			_logger.WriteLine($"2048 GAME       SCORE: {_score.ScoreCalculator(array)}\n");
-			for (int i = 0; i < 4; i++)
-			{
-				_logger.WriteLine(new string('-', 25));
-				_logger.Write("|  ");
-				for (int j = 0; j < 4; j++)
-				{
-					_color.AddColor(_logger, array[i, j]);
-					_logger.Write("  |  ");
-				}
-				_logger.WriteLine("");
-			}
 			_logger.WriteLine(new string('-', 25));
+			_logger.Write("|  ");
+			for (int j = 0; j < 4; j++)
+			{
+				_color.AddColor(_logger, array[i, j]);
+				_logger.Write("  |  ");
+			}
+			_logger.WriteLine("");
 		}
-		
+		_logger.WriteLine(new string('-', 25));
+
 	}
 }
