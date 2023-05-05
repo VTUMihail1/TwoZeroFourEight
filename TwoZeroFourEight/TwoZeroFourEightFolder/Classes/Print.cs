@@ -57,7 +57,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 					_color.AddColors(_logger, array[i, j]);
 					_logger.Write(midEndOfRow);
 				}
-				_logger.WriteLine(string.Empty);
+				_logger.WriteLine();
 			}
 			_logger.WriteLine(fullRow);
 		}

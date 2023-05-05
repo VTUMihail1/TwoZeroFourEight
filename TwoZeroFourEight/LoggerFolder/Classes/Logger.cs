@@ -4,11 +4,11 @@ namespace TwoZeroFourEight.LoggerFolder.Classes
 {
     public class Logger : ILogger
     {
-        public void WriteLine(string message)
+        public void WriteLine(string? message = null)
         {
             Console.WriteLine(message);
         }
-        public void Write(string message)
+        public void Write(string? message = null)
         {
             Console.Write(message);
         }

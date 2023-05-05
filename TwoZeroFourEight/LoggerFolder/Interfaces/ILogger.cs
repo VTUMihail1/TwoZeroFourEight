@@ -2,8 +2,8 @@
 {
     public interface ILogger
     {
-        void WriteLine(string message);
-        void Write(string message);
+        void WriteLine(string? message = null);
+        void Write(string? message = null);
         void Clear();
         void ReadKey();
 	}
