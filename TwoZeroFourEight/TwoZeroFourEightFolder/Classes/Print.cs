@@ -15,12 +15,12 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		}
 		public void PrintMenu()
 		{
-			string message = "\n\n   Press UP ARROW to swipe up\n" +
-							 "   Press RIGHT ARROW to swipe right\n" +
-							 "   Press DOWN ARROW to swipe down\n" +
-							 "   Press LEFT ARROW to swipe left\n\n" +
-							 "   Press R to restart the game\n" +
-							 "   Press ESC to exit\n";
+			string message = "\n\nPress UP ARROW to swipe up\n" +
+							 "Press RIGHT ARROW to swipe right\n" +
+							 "Press DOWN ARROW to swipe down\n" +
+							 "Press LEFT ARROW to swipe left\n\n" +
+							 "Press R to restart the game\n" +
+							 "Press ESC to exit\n";
 			_logger.WriteLine(message);
 		}
 		public void DisplayPrint(int[,] array, int lastScore, int bestScore)
@@ -37,8 +37,8 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		}
 		public void PrintHeading(int score, int bestScore)
 		{
-			string message = $"2048                   BEST SCORE: {bestScore}\n" +
-							 $"                            SCORE: {score}\n";
+			string message = $"2048                  BEST SCORE: {bestScore}\n" +
+							 $"                           SCORE: {score}\n";
 			_logger.Clear();
 			_logger.WriteLine(message);
 		}
@@ -72,7 +72,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			int lowestScore = 0;
 			if (bestScore != lowestScore)
 			{
-				string message =  "\n\n\n            GAME OVER \n\n" +
+				string message =  "\n\n\n             GAME OVER \n\n" +
 								 $"       SCORE FROM LAST GAME: \n" +
 								 $"                {lastScore}\n\n" +
 								  "         PRESS ANY BUTTON \n" +

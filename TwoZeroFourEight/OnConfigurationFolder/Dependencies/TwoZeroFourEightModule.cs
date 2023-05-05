@@ -8,7 +8,7 @@ using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 {
-	public class TZFEModule : NinjectModule
+	public class TwoZeroFourEightModule : NinjectModule
 	{
 		public override void Load()
 		{

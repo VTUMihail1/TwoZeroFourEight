@@ -67,7 +67,8 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 			}
 
 			Console.ForegroundColor = color;
-			logger.Write(value.ToString().PadRight(4));
+			string result = value.ToString().PadRight(4);
+			logger.Write(result);
 			Console.ResetColor();
 		}
 	}
