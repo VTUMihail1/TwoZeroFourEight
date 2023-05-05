@@ -63,8 +63,8 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		}
 		private void PressAnyButtonPrint()
 		{
-			string message = "\n\n           PRESS ANY ARROW \n" +
-								  "          TO START THE GAME\n\n\n\n";
+			string message = "\n\n          PRESS ANY ARROW \n" +
+								  "         TO START THE GAME\n\n\n\n";
 			_logger.WriteLine(message);
 		}
 		private void GameOverPrint(int lastScore, int bestScore)
@@ -73,7 +73,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			if (bestScore != lowestScore)
 			{
 				string message =  "\n\n\n             GAME OVER \n\n" +
-								 $"       SCORE FROM LAST GAME: \n" +
+								  "       SCORE FROM LAST GAME: \n" +
 								 $"                {lastScore}\n\n" +
 								  "         PRESS ANY BUTTON \n" +
 								  "           TO CONTINUE";

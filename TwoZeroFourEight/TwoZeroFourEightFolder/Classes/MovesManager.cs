@@ -3,30 +3,30 @@ using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
-	public class Moves : IMoves
+	public class MovesManager : IMovesManager
 	{
-		private IGameMoves _moves;
-		public Moves(IGameMoves moves)
+		private IGameMoves _gameMoves;
+		public MovesManager(IGameMoves gameMoves)
 		{
-			_moves = moves;
+			_gameMoves = gameMoves;
 		}
 		public void CheckMoves(ConsoleKeyInfo key, int[,] array)
 		{
 			if (key.Key == ConsoleKey.RightArrow)
 			{
-				_moves.Right(array);
+				_gameMoves.Right(array);
 			}
 			else if (key.Key == ConsoleKey.LeftArrow)
 			{
-				_moves.Left(array);
+				_gameMoves.Left(array);
 			}
 			else if (key.Key == ConsoleKey.UpArrow)
 			{
-				_moves.Up(array);
+				_gameMoves.Up(array);
 			}
 			else if (key.Key == ConsoleKey.DownArrow)
 			{
-				_moves.Down(array);
+				_gameMoves.Down(array);
 			}
 		}
 	}

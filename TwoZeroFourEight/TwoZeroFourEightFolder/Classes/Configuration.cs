@@ -4,18 +4,18 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
 	class Configuration : IConfiguration
 	{
-		private readonly IMoves _movesManager;
-		private readonly IServices _services;
-		public Configuration(IMoves movesManager, IServices services)
+		private readonly IMovesManager _movesManager;
+		private readonly IServicesManager _servicesManager;
+		public Configuration(IMovesManager movesManager, IServicesManager servicesManager)
 		{
 			_movesManager = movesManager;
-			_services = services;
+			_servicesManager = servicesManager;
 		}
 		public void Run(int[,] array)
 		{
 			var key = Console.ReadKey();
 			_movesManager.CheckMoves(key, array);
-			_services.ServicesManager(key, array);
+			_servicesManager.GameServices(key, array);
 
 		}
 	}

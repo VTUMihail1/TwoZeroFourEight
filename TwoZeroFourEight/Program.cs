@@ -3,6 +3,6 @@ using TwoZeroFourEight.OnConfigurationFolder.Dependencies;
 using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 IKernel kernel = new StandardKernel(new TwoZeroFourEightModule());
-IGame tzfe = kernel.Get<IGame>();
+IGameManager tzfe = kernel.Get<IGameManager>();
 
 tzfe.Start();

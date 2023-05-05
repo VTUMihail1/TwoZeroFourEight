@@ -19,15 +19,14 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IAddRandomService>().To<AddRandomService>();
 			Bind<IRestartGameService>().To<RestartGameService>();
 			Bind<IYouLostService>().To<YouLostService>();
-			Bind<IMoves>().To<Moves>();
-			Bind<IServices>().To<Services>();
-			Bind<IBoard>().To<Board>();
+			Bind<IMovesManager>().To<MovesManager>();
+			Bind<IServicesManager>().To<ServicesManager>();
+			Bind<IInitializeBoard>().To<InitializeBoard>();
 			Bind<IScore>().To<Score>();
-			Bind<IGame>().To<Game>();
+			Bind<IGameManager>().To<GameManager>();
 			Bind<IPrint>().To<Print>();
 			Bind<IConfiguration>().To<Configuration>();
-			Bind<ISetup>().To<Setup>();
-			Bind<IDisplayManager>().To<DisplayManager>();
+			Bind<IUIManager>().To<UIManager>();
 		}
 	}
 }

@@ -2,9 +2,9 @@
 
 namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
-	class Board : IBoard
+	class InitializeBoard : IInitializeBoard
 	{
-		public int[,] InitialiseBoard(int size)
+		public int[,] CreateBoard(int size)
 		{
 			int[,] array = new int[size, size];
 			return array;

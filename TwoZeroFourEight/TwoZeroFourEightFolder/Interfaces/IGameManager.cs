@@ -1,8 +1,7 @@
 ﻿namespace TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces
 {
-	public interface IBoard
+	public interface IGameManager
 	{
-		int[,] InitialiseBoard(int size);
+		void Start();
 	}
 }
-

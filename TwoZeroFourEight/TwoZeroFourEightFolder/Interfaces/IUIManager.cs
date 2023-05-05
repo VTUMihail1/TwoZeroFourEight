@@ -1,6 +1,6 @@
 ﻿namespace TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces
 {
-	public interface IDisplayManager
+	public interface IUIManager
 	{
 		void PrintSetup(int[,] array);
 	}
