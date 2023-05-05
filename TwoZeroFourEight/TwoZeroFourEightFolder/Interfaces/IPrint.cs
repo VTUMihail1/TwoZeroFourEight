@@ -2,8 +2,8 @@
 {
     public interface IPrint
     {
-        void PrintMenu();
-        void PrintBoard(int[,] array);
-
+		void PrintHeading(int score, int bestScore);
+		void PrintMenu();
+		void DisplayPrint(int[,] array, int lastScore, int bestScore);
 	}
 }

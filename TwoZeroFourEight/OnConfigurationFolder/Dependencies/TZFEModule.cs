@@ -27,6 +27,7 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IPrint>().To<Print>();
 			Bind<IConfiguration>().To<Configuration>();
 			Bind<ISetup>().To<Setup>();
+			Bind<IDisplayManager>().To<DisplayManager>();
 		}
 	}
 }

@@ -4,6 +4,18 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
 	class Score : IScore
 	{
+		public int BestScore
+		{
+			get{return _bestScore;} 
+			set{_bestScore = value;}
+		}
+		public int LastScore
+		{
+			get { return _lastScore; }
+			set { _lastScore = value; }
+		}
+		private int _lastScore;
+		private int _bestScore;
 		public int ScoreCalculator(int[,] array)
 		{
 			int size = array.GetLength(0);
@@ -22,6 +34,8 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 					}
 				}
 			}
+			_bestScore = Math.Max(_bestScore, score);
+			_lastScore = score;
 			return score;
 		}
 	}

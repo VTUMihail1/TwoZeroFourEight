@@ -5,6 +5,6 @@
         void WriteLine(string message);
         void Write(string message);
         void Clear();
-
+        void ReadKey();
 	}
 }

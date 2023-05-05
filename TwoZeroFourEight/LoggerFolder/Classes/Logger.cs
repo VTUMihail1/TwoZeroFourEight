@@ -16,6 +16,9 @@ namespace TwoZeroFourEight.LoggerFolder.Classes
         {
             Console.Clear();
         }
-
-    }
+		public void ReadKey()
+		{
+			Console.ReadKey();
+		}
+	}
 }

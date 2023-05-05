@@ -19,7 +19,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		{
 			if (key.Key == ConsoleKey.R || _lostChecker.YouLost(array))
 			{
-				_restart.RestartGame(array);
+                _restart.RestartGame(array);
 			}
 			else if (key.Key == ConsoleKey.Escape)
 			{

@@ -5,24 +5,22 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 	class Setup : ISetup
 	{
 		private readonly IConfiguration _config;
-		private readonly IPrint _print;
+		private readonly IDisplayManager _display;
 		private readonly IBoard _board;
-		private int[,] _array;
 
-		public Setup(IConfiguration config, IPrint print, IBoard board)
+		public Setup(IConfiguration config, IDisplayManager display, IBoard board)
 		{
 			_config = config;
-			_print = print;
+			_display = display;
 			_board = board;
 		}
 		public void GameSetup()
 		{
-			_array = _board.InitialiseBoard(4);
+			int[,] array = _board.InitialiseBoard(4);
 			while (true)
 			{
-				_print.PrintBoard(_array);
-				_print.PrintMenu();
-				_config.Run(_array);
+				_display.PrintSetup(array);
+				_config.Run(array);
 			}
 		}
 	}
