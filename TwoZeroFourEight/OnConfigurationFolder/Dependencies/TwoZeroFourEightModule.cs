@@ -22,11 +22,12 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IMovesManager>().To<MovesManager>();
 			Bind<IServicesManager>().To<ServicesManager>();
 			Bind<IInitializeBoard>().To<InitializeBoard>();
-			Bind<IScore>().To<Score>();
+			Bind<IScore>().To<Score>().InSingletonScope();
 			Bind<IGameManager>().To<GameManager>();
 			Bind<IPrint>().To<Print>();
-			Bind<IConfiguration>().To<Configuration>();
+			Bind<IStateManager>().To<StateManager>();
 			Bind<IUIManager>().To<UIManager>();
+			Bind<ITwoZeroFourEightGame>().To<TwoZeroFourEightGame>();
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 	{
 		public bool YouLost(int[,] array)
 		{
-			int size = 4;
+			int size = array.GetLength(0);
 			for (int i = 0; i < size; i++)
 			{
 				for (int j = 0; j < size; j++)

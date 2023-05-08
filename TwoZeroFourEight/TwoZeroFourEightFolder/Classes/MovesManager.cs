@@ -10,23 +10,23 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		{
 			_gameMoves = gameMoves;
 		}
-		public void CheckMoves(ConsoleKeyInfo key, int[,] array)
+		public void CheckMoves(ConsoleKeyInfo key, IScore score, int[,] array)
 		{
 			if (key.Key == ConsoleKey.RightArrow)
 			{
-				_gameMoves.Right(array);
+				_gameMoves.Right(score, array);
 			}
 			else if (key.Key == ConsoleKey.LeftArrow)
 			{
-				_gameMoves.Left(array);
+				_gameMoves.Left(score, array);
 			}
 			else if (key.Key == ConsoleKey.UpArrow)
 			{
-				_gameMoves.Up(array);
+				_gameMoves.Up(score, array);
 			}
 			else if (key.Key == ConsoleKey.DownArrow)
 			{
-				_gameMoves.Down(array);
+				_gameMoves.Down(score, array);
 			}
 		}
 	}

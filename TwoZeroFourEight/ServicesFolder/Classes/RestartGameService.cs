@@ -1,12 +1,20 @@
 ﻿using TwoZeroFourEight.ServicesFolder.Interfaces;
+using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 namespace TwoZeroFourEight.ServicesFolder.Classes
 {
 	class RestartGameService : IRestartGameService
 	{
-		public void RestartGame(int[,] array)
+		private IScore _score;
+        public RestartGameService(IScore score)
+        {
+			_score = score;
+        }
+        public void RestartGame(int[,] array)
 		{
-			int size = 4;
+			_score.ManageLastScore = _score.ManageScore;
+			_score.ManageScore = 0;
+			int size = array.GetLength(0);
 			for (int i = 0; i < size; i++)
 			{
 				for (int j = 0; j < size; j++)

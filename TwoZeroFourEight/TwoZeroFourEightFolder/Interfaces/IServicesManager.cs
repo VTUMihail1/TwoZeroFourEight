@@ -1,7 +1,9 @@
-﻿namespace TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces
+﻿namespace TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces 
 {
 	public interface IServicesManager
 	{
-		void GameServices(ConsoleKeyInfo key, int[,] array);
+		void Run(IScore score, int[,] array);
 	}
 }
+
+

@@ -11,7 +11,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 		}
 		public void AddRandom(int[,] array)
 		{
-			int size = 4;
+			int size = array.GetLength(0);
 			int result = _random.Next(size * size);
 			if (array.Cast<int>().All(tile => tile == 0))
 			{

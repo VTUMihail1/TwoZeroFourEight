@@ -2,6 +2,6 @@
 {
 	public interface IGameManager
 	{
-		void Start();
+		void Start(int[,] array);
 	}
 }

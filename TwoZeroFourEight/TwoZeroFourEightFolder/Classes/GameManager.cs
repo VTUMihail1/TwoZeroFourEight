@@ -4,23 +4,22 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
 	class GameManager : IGameManager
 	{
-		private readonly IConfiguration _config;
+		private readonly IServicesManager _services;
 		private readonly IUIManager _uiManager;
-		private readonly IInitializeBoard _initializeBoard;
+		private readonly IScore _score;
 
-		public GameManager(IConfiguration config, IUIManager uiManager, IInitializeBoard initializeBoard)
+		public GameManager(IServicesManager services, IUIManager uiManager,IScore score)
 		{
-			_config = config;
+			_services = services;
 			_uiManager = uiManager;
-			_initializeBoard = initializeBoard;
+			_score = score;
 		}
-		public void Start()
+		public void Start(int[,] array)
 		{
-			int[,] array = _initializeBoard.CreateBoard(4);
 			while (true)
 			{
-				_uiManager.PrintSetup(array);
-				_config.Run(array);
+				_uiManager.PrintSetup(_score, array);
+				_services.Run(_score, array);
 			}
 		}
 	}

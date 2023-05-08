@@ -2,7 +2,7 @@
 {
     public interface IPrint
     {
-		void PrintHeading(int score, int bestScore);
+		void PrintHeading(int score, int bestScore, int size);
 		void PrintMenu();
 		void DisplayPrint(int[,] array, int lastScore, int bestScore);
 	}

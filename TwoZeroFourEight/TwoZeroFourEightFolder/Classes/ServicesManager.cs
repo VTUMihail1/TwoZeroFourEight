@@ -1,34 +1,21 @@
-﻿using TwoZeroFourEight.ServicesFolder.Interfaces;
-using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
+﻿using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
-	public class ServicesManager : IServicesManager
+	class ServicesManager : IServicesManager
 	{
-		private readonly IRestartGameService _restart;
-		private readonly IAddRandomService _add;
-		private readonly IYouLostService _lostChecker;
-
-		public ServicesManager(IRestartGameService restart, IAddRandomService add, IYouLostService lostChecker)
+		private readonly IMovesManager _movesManager;
+		private readonly IStateManager _stateManager;
+		public ServicesManager(IMovesManager movesManager, IStateManager stateManager)
 		{
-			_restart = restart;
-			_add = add;
-			_lostChecker = lostChecker;
+			_movesManager = movesManager;
+			_stateManager = stateManager;
 		}
-		public void GameServices(ConsoleKeyInfo key, int[,] array)
+		public void Run(IScore score, int[,] array)
 		{
-			if (key.Key == ConsoleKey.R || _lostChecker.YouLost(array))
-			{
-                _restart.RestartGame(array);
-			}
-			else if (key.Key == ConsoleKey.Escape)
-			{
-				Environment.Exit(1);
-			}
-			else if(key.Key >= ConsoleKey.LeftArrow && key.Key <= ConsoleKey.DownArrow)
-			{
-			    _add.AddRandom(array);
-			}
+			var key = Console.ReadKey();
+			_movesManager.CheckMoves(key, score, array);
+			_stateManager.GameServices(key, array);
 
 		}
 	}

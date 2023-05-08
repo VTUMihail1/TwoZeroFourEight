@@ -31,23 +31,25 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			}
 			else
 			{
-				GameOverPrint(lastScore, bestScore);
-				PressAnyButtonPrint();
+				int size = array.GetLength(0);
+				GameOverPrint(lastScore, bestScore, size);
+				PressAnyButtonPrint(size);
 			}
 		}
-		public void PrintHeading(int score, int bestScore)
+		public void PrintHeading(int score, int bestScore, int size)
 		{
-			string message = $"2048                  BEST SCORE: {bestScore}\n" +
-							 $"                           SCORE: {score}\n";
+			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 1) * 9) - 6));
+			string message = $"2048{gap}BEST SCORE: {bestScore}\n" +
+							 $"{gap}    SCORE: {score}\n";
 			_logger.Clear();
 			_logger.WriteLine(message);
 		}
 		private void PrintBoard(int[,] array)
 		{
-			string fullRow = "-------------------------------------";
+			int size = array.GetLength(0);
+			string fullRow = string.Concat(Enumerable.Repeat("-", size * 9 + 1));
 			string startOfRow = "|  ";
 			string midEndOfRow = "  |  ";
-			int size = array.GetLength(0);
 			for (int i = 0; i < size; i++)
 			{
 				_logger.WriteLine(fullRow);
@@ -61,27 +63,29 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			}
 			_logger.WriteLine(fullRow);
 		}
-		private void PressAnyButtonPrint()
+		private void PressAnyButtonPrint(int size)
 		{
-			string message = "\n\n          PRESS ANY ARROW \n" +
-								  "         TO START THE GAME\n\n\n\n";
+			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
+			string message = $"\n\n{gap}          PRESS ANY ARROW \n" +
+								  $"{gap}         TO START THE GAME\n\n\n\n";
 			_logger.WriteLine(message);
 		}
-		private void GameOverPrint(int lastScore, int bestScore)
+		private void GameOverPrint(int lastScore, int bestScore, int size)
 		{
 			int lowestScore = 0;
 			if (bestScore != lowestScore)
 			{
-				string message =  "\n\n\n             GAME OVER \n\n" +
-								  "       SCORE FROM LAST GAME: \n" +
-								 $"                {lastScore}\n\n" +
-								  "         PRESS ANY BUTTON \n" +
-								  "           TO CONTINUE";
+				string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9)/2));
+				string message = $"\n\n\n{gap}             GAME OVER \n\n" +
+								 $"{gap}       SCORE FROM LAST GAME: \n" +
+								 $"{gap}                {lastScore}\n\n" +
+								 $"{gap}         PRESS ANY BUTTON \n" +
+								 $"{gap}            TO CONTINUE";
 				_logger.Clear();
 				_logger.WriteLine(message);
 				_logger.ReadKey();
 				_logger.Clear();
-				PrintHeading(lowestScore, bestScore);
+				PrintHeading(lowestScore, bestScore, size);
 			}
 		}
 	}

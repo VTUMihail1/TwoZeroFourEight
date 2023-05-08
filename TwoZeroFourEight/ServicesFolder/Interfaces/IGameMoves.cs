@@ -1,11 +1,13 @@
-﻿namespace TwoZeroFourEight.ServicesFolder.Interfaces
+﻿using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
+
+namespace TwoZeroFourEight.ServicesFolder.Interfaces
 {
     public interface IGameMoves
     {
-        void Up(int[,] array);
-        void Down(int[,] array);
-        void Right(int[,] array);
-        void Left(int[,] array);
+        void Up(IScore score, int[,] array);
+        void Down(IScore score, int[,] array);
+        void Right(IScore score, int[,] array);
+        void Left(IScore score, int[,] array);
 
     }
 }
