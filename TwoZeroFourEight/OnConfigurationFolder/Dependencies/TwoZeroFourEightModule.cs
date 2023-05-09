@@ -28,6 +28,8 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IStateManager>().To<StateManager>();
 			Bind<IUIManager>().To<UIManager>();
 			Bind<ITwoZeroFourEightGame>().To<TwoZeroFourEightGame>();
+			Bind<IResultManager>().To<ResultManager>();
+			Bind<IYouWonService>().To<YouWonService>();
 		}
 	}
 }

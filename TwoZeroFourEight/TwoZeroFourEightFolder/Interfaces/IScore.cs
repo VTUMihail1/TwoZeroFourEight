@@ -4,7 +4,8 @@
 	{
 		int ManageScore { get; set; }
 		int ManageLastScore { get; set; }
-		int ManageBestScore { get;}
+		int HighestTileScore { get; set; }
+		int ManageBestScore { get; set; }
 	}
 }
 

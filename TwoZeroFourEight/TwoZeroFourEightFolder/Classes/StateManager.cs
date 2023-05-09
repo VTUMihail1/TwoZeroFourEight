@@ -5,19 +5,19 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 {
 	public class StateManager : IStateManager
 	{
+		private readonly IResultManager _resultManager;
 		private readonly IRestartGameService _restart;
 		private readonly IAddRandomService _add;
-		private readonly IYouLostService _lostChecker;
 
-		public StateManager(IRestartGameService restart, IAddRandomService add, IYouLostService lostChecker)
+		public StateManager(IResultManager resultManager, IRestartGameService restart, IAddRandomService add)
 		{
 			_restart = restart;
 			_add = add;
-			_lostChecker = lostChecker;
+			_resultManager = resultManager;
 		}
 		public void GameServices(ConsoleKeyInfo key, int[,] array)
 		{
-			if (key.Key == ConsoleKey.R || _lostChecker.YouLost(array))
+			if (key.Key == ConsoleKey.R || _resultManager.ManageResult(array))
 			{
                 _restart.RestartGame(array);
 			}

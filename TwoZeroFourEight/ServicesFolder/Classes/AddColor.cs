@@ -49,18 +49,6 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 			{
 				color = ConsoleColor.DarkMagenta;
 			}
-			else if (value == 2048)
-			{
-				color = ConsoleColor.DarkCyan;
-			}
-			else if (value == 4096)
-			{
-				color = ConsoleColor.DarkBlue;
-			}
-			else if (value == 8192)
-			{
-				color = ConsoleColor.Gray;
-			}
 			else
 			{
 				color = ConsoleColor.White;

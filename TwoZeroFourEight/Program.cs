@@ -5,4 +5,4 @@ using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 IKernel kernel = new StandardKernel(new TwoZeroFourEightModule());
 ITwoZeroFourEightGame tzfe = kernel.Get<ITwoZeroFourEightGame>();
 
-tzfe.Play(7);
+tzfe.Play(4);

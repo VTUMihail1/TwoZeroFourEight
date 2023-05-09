@@ -1,4 +1,5 @@
-﻿using TwoZeroFourEight.LoggerFolder.Interfaces;
+﻿using System.Drawing;
+using TwoZeroFourEight.LoggerFolder.Interfaces;
 using TwoZeroFourEight.ServicesFolder.Interfaces;
 using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
@@ -23,7 +24,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 							 "Press ESC to exit\n";
 			_logger.WriteLine(message);
 		}
-		public void DisplayPrint(int[,] array, int lastScore, int bestScore)
+		public void DisplayPrint(IScore score, int[,] array)
 		{
 			if (!array.Cast<int>().All(tile => tile == 0))
 			{
@@ -32,15 +33,15 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			else
 			{
 				int size = array.GetLength(0);
-				GameOverPrint(lastScore, bestScore, size);
+				GameOverPrint(score, size);
 				PressAnyButtonPrint(size);
 			}
 		}
-		public void PrintHeading(int score, int bestScore, int size)
+		public void PrintHeading(IScore score , int size)
 		{
 			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 1) * 9) - 6));
-			string message = $"2048{gap}BEST SCORE: {bestScore}\n" +
-							 $"{gap}    SCORE: {score}\n";
+			string message = $"2048{gap}BEST SCORE: {score.ManageBestScore}\n" +
+							 $"{gap}    SCORE: {score.ManageScore}\n";
 			_logger.Clear();
 			_logger.WriteLine(message);
 		}
@@ -70,23 +71,45 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 								  $"{gap}         TO START THE GAME\n\n\n\n";
 			_logger.WriteLine(message);
 		}
-		private void GameOverPrint(int lastScore, int bestScore, int size)
+		private void GameOverPrint(IScore score, int size)
 		{
 			int lowestScore = 0;
-			if (bestScore != lowestScore)
+			if (score.ManageBestScore != lowestScore)
 			{
-				string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9)/2));
-				string message = $"\n\n\n{gap}             GAME OVER \n\n" +
-								 $"{gap}       SCORE FROM LAST GAME: \n" +
-								 $"{gap}                {lastScore}\n\n" +
-								 $"{gap}         PRESS ANY BUTTON \n" +
-								 $"{gap}            TO CONTINUE";
+				int maxTile = 2048;
+				string message = score.HighestTileScore == maxTile
+					? YouWon(score, size) 
+					: YouLost(score, size);
 				_logger.Clear();
 				_logger.WriteLine(message);
 				_logger.ReadKey();
 				_logger.Clear();
-				PrintHeading(lowestScore, bestScore, size);
+				PrintHeading(score ,size);
 			}
+		}
+		private string YouLost(IScore score, int size)
+		{
+			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
+			string message = $"\n\n\n{gap}             GAME OVER \n\n" +
+							 $"{gap}       SCORE FROM LAST GAME: \n" +
+							 $"{gap}                {score.ManageLastScore}\n\n" +
+							 $"{gap}    HIGHEST TILE FROM LAST GAME: \n" +
+							 $"{gap}                {score.HighestTileScore}\n\n" +
+							 $"{gap}         PRESS ANY BUTTON \n" +
+							 $"{gap}            TO CONTINUE";
+			return message;
+		}
+		private string YouWon(IScore score,int size)
+		{
+			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
+			string message = $"\n\n\n{gap}              YOU WON \n\n\n" +
+							 $"{gap}       SCORE FROM LAST GAME: \n" +
+							 $"{gap}                {score.ManageLastScore}\n\n" +
+							 $"{gap}    HIGHEST TILE FROM LAST GAME: \n" +
+							 $"{gap}                {score.HighestTileScore}\n\n" +
+							 $"{gap}         PRESS ANY BUTTON \n" +
+							 $"{gap}            TO CONTINUE";
+			return message;
 		}
 	}
 }

@@ -13,8 +13,8 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		public void PrintSetup(IScore score, int[,] array)
 		{
 			int size = array.GetLength(0);
-			_print.PrintHeading(score.ManageScore, score.ManageBestScore, size);
-			_print.DisplayPrint(array, score.ManageLastScore, score.ManageBestScore);
+			_print.PrintHeading(score, size);
+			_print.DisplayPrint(score, array);
 			_print.PrintMenu();
 
 
