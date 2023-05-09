@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using TwoZeroFourEight.LoggerFolder.Interfaces;
-using TwoZeroFourEight.ServicesFolder.Interfaces;
+﻿using TwoZeroFourEight.LoggerFolder.Interfaces;
 using TwoZeroFourEight.TwoZeroFourEightFolder.Interfaces;
 
 namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
@@ -8,11 +6,13 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 	class Print : IPrint
 	{
 		private readonly ILogger _logger;
-		private readonly IAddColor _color;
-		public Print(ILogger logger, IAddColor color)
+		private readonly IPrintBoard _board;
+		private readonly IPrintResult _result;
+		public Print(ILogger logger, IPrintBoard board, IPrintResult result)
 		{
 			_logger = logger;
-			_color = color;
+			_board = board;
+			_result = result;
 		}
 		public void PrintMenu()
 		{
@@ -28,12 +28,15 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 		{
 			if (!array.Cast<int>().All(tile => tile == 0))
 			{
-				PrintBoard(array);
+				_board.PrintGameBoard(array);
 			}
 			else
 			{
 				int size = array.GetLength(0);
-				GameOverPrint(score, size);
+				if (_result.GameOverPrint(size))
+				{
+					PrintHeading(score, size);
+				}
 				PressAnyButtonPrint(size);
 			}
 		}
@@ -45,25 +48,6 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			_logger.Clear();
 			_logger.WriteLine(message);
 		}
-		private void PrintBoard(int[,] array)
-		{
-			int size = array.GetLength(0);
-			string fullRow = string.Concat(Enumerable.Repeat("-", size * 9 + 1));
-			string startOfRow = "|  ";
-			string midEndOfRow = "  |  ";
-			for (int i = 0; i < size; i++)
-			{
-				_logger.WriteLine(fullRow);
-				_logger.Write(startOfRow);
-				for (int j = 0; j < size; j++)
-				{
-					_color.AddColors(_logger, array[i, j]);
-					_logger.Write(midEndOfRow);
-				}
-				_logger.WriteLine();
-			}
-			_logger.WriteLine(fullRow);
-		}
 		private void PressAnyButtonPrint(int size)
 		{
 			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
@@ -71,46 +55,7 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 								  $"{gap}         TO START THE GAME\n\n\n\n";
 			_logger.WriteLine(message);
 		}
-		private void GameOverPrint(IScore score, int size)
-		{
-			int lowestScore = 0;
-			if (score.ManageBestScore != lowestScore)
-			{
-				int maxTile = 2048;
-				string message = score.HighestTileScore == maxTile
-					? YouWon(score, size) 
-					: YouLost(score, size);
-				_logger.Clear();
-				_logger.WriteLine(message);
-				_logger.ReadKey();
-				_logger.Clear();
-				PrintHeading(score ,size);
-			}
-		}
-		private string YouLost(IScore score, int size)
-		{
-			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
-			string message = $"\n\n\n{gap}             GAME OVER \n\n" +
-							 $"{gap}       SCORE FROM LAST GAME: \n" +
-							 $"{gap}                {score.ManageLastScore}\n\n" +
-							 $"{gap}    HIGHEST TILE FROM LAST GAME: \n" +
-							 $"{gap}                {score.HighestTileScore}\n\n" +
-							 $"{gap}         PRESS ANY BUTTON \n" +
-							 $"{gap}            TO CONTINUE";
-			return message;
-		}
-		private string YouWon(IScore score,int size)
-		{
-			string gap = string.Concat(Enumerable.Repeat(" ", ((size - 4) * 9) / 2));
-			string message = $"\n\n\n{gap}              YOU WON \n\n\n" +
-							 $"{gap}       SCORE FROM LAST GAME: \n" +
-							 $"{gap}                {score.ManageLastScore}\n\n" +
-							 $"{gap}    HIGHEST TILE FROM LAST GAME: \n" +
-							 $"{gap}                {score.HighestTileScore}\n\n" +
-							 $"{gap}         PRESS ANY BUTTON \n" +
-							 $"{gap}            TO CONTINUE";
-			return message;
-		}
+		
 	}
 }
 

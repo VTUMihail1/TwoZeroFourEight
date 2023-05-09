@@ -19,6 +19,9 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IAddRandomService>().To<AddRandomService>();
 			Bind<IRestartGameService>().To<RestartGameService>();
 			Bind<IYouLostService>().To<YouLostService>();
+			Bind<IPrintBoard>().To<PrintBoard>();
+			Bind<IPrintState>().To<PrintState>();
+			Bind<IPrintResult>().To<PrintResult>();
 			Bind<IMovesManager>().To<MovesManager>();
 			Bind<IServicesManager>().To<ServicesManager>();
 			Bind<IInitializeBoard>().To<InitializeBoard>();

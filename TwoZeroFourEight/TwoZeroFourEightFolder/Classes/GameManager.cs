@@ -6,20 +6,18 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 	{
 		private readonly IServicesManager _services;
 		private readonly IUIManager _uiManager;
-		private readonly IScore _score;
 
-		public GameManager(IServicesManager services, IUIManager uiManager,IScore score)
+		public GameManager(IServicesManager services, IUIManager uiManager)
 		{
 			_services = services;
 			_uiManager = uiManager;
-			_score = score;
 		}
 		public void Start(int[,] array)
 		{
 			while (true)
 			{
-				_uiManager.PrintSetup(_score, array);
-				_services.Run(_score, array);
+				_uiManager.PrintSetup(array);
+				_services.Run(array);
 			}
 		}
 	}

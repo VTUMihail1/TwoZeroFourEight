@@ -2,6 +2,6 @@
 {
 	public interface IUIManager
 	{
-		void PrintSetup(IScore score, int[,] array);
+		void PrintSetup(int[,] array);
 	}
 }

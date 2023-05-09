@@ -11,10 +11,10 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 			_movesManager = movesManager;
 			_stateManager = stateManager;
 		}
-		public void Run(IScore score, int[,] array)
+		public void Run(int[,] array)
 		{
 			var key = Console.ReadKey();
-			_movesManager.CheckMoves(key, score, array);
+			_movesManager.CheckMoves(key, array);
 			_stateManager.GameServices(key, array);
 
 		}

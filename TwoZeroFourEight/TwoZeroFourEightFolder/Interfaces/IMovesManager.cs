@@ -2,6 +2,6 @@
 {
 	public interface IMovesManager
 	{
-		void CheckMoves(ConsoleKeyInfo key, IScore score, int[,] array);
+		void CheckMoves(ConsoleKeyInfo key, int[,] array);
 	}
 }

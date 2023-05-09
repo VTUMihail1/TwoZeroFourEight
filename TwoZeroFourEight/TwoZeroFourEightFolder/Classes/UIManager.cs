@@ -5,16 +5,18 @@ namespace TwoZeroFourEight.TwoZeroFourEightFolder.Classes
 	public class UIManager : IUIManager
 	{
 		private readonly IPrint _print;
+		private readonly IScore _score;
 
-		public UIManager(IPrint print)
+		public UIManager(IPrint print, IScore score)
 		{
 			_print = print;
+			_score = score;
 		}
-		public void PrintSetup(IScore score, int[,] array)
+		public void PrintSetup(int[,] array)
 		{
 			int size = array.GetLength(0);
-			_print.PrintHeading(score, size);
-			_print.DisplayPrint(score, array);
+			_print.PrintHeading(_score, size);
+			_print.DisplayPrint(_score, array);
 			_print.PrintMenu();
 
 

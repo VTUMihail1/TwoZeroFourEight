@@ -5,10 +5,16 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 {
 	class GameMoves : IGameMoves
 	{
-		private int _size;
+		private IScore _score;
+
+		public GameMoves(IScore score)
+        {
+			_score = score;
+        }
+        private int _size;
 		private int currentIndex;
 		private int currentNumber;
-		public void Left(IScore score, int[,] array)
+		public void Left(int[,] array)
 		{
 			_size = array.GetLength(0);
 			for (int i = 0; i < _size; i++)
@@ -23,7 +29,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 						if (currentNumber == array[i, j])
 						{
 							array[i, currentIndex++] = currentNumber * 2;
-							score.ManageScore += currentNumber;
+							_score.ManageScore += currentNumber;
 							currentNumber = 0;
 						}
 						else if (currentNumber == 0)
@@ -44,7 +50,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 				}
 			}
 		}
-		public void Up(IScore score, int[,] array)
+		public void Up(int[,] array)
 		{
 			_size = array.GetLength(0);
 			for (int i = 0; i < _size; i++)
@@ -59,7 +65,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 						if (currentNumber == array[j, i])
 						{
 							array[currentIndex++, i] = currentNumber * 2;
-							score.ManageScore += currentNumber;
+							_score.ManageScore += currentNumber;
 							currentNumber = 0;
 						}
 						else if (currentNumber == 0)
@@ -80,7 +86,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 				}
 			}
 		}
-		public void Right(IScore score, int[,] array)
+		public void Right(int[,] array)
 		{
 			_size = array.GetLength(0);
 			for (int i = 0; i < _size; i++)
@@ -95,7 +101,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 						if (currentNumber == array[i, j])
 						{
 							array[i, currentIndex--] = currentNumber * 2;
-							score.ManageScore += currentNumber;
+							_score.ManageScore += currentNumber;
 							currentNumber = 0;
 						}
 						else if (currentNumber == 0)
@@ -116,7 +122,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 				}
 			}
 		}
-		public void Down(IScore score, int[,] array)
+		public void Down(int[,] array)
 		{
 			_size = array.GetLength(0);
 			for (int i = 0; i < _size; i++)
@@ -131,7 +137,7 @@ namespace TwoZeroFourEight.ServicesFolder.Classes
 						if (currentNumber == array[j, i])
 						{
 							array[currentIndex--, i] = currentNumber * 2;
-							score.ManageScore += currentNumber;
+							_score.ManageScore += currentNumber;
 							currentNumber = 0;
 						}
 						else if (currentNumber == 0)

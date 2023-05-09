@@ -2,7 +2,7 @@
 {
 	public interface IServicesManager
 	{
-		void Run(IScore score, int[,] array);
+		void Run(int[,] array);
 	}
 }
 
