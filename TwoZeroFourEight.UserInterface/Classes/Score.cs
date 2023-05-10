@@ -14,25 +14,13 @@ namespace TwoZeroFourEight.Services.Classes
         {
             get
             {
-                return _bestScore;
-<<<<<<< HEAD:TwoZeroFourEight.UserInterface/Classes/Score.cs
-            }
-            set
-            {
                 if (_score > _bestScore)
                 {
                     _bestScore = _score;
                 }
+                return _bestScore;
             }
-=======
-            }
-            set {
-				if (_score > _bestScore)
-				{
-					_bestScore = _score;
-				}
-			}
->>>>>>> e6b183b92ae3b63db532bceb674ba6e87fa428e3:TwoZeroFourEight/Services/Classes/Score.cs
+            set { _bestScore = value; }
         }
 
     }
