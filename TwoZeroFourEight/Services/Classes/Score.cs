@@ -14,13 +14,14 @@ namespace TwoZeroFourEight.Services.Classes
         {
             get
             {
-                if (_score > _bestScore)
-                {
-                    _bestScore = _score;
-                }
                 return _bestScore;
             }
-            set { _bestScore = value; }
+            set {
+				if (_score > _bestScore)
+				{
+					_bestScore = _score;
+				}
+			}
         }
 
     }
