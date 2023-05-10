@@ -15,6 +15,7 @@ namespace TwoZeroFourEight.Score.Classes
             get
             {
                 return _bestScore;
+<<<<<<< HEAD:TwoZeroFourEight.Score/Classes/Score.cs
             }
             set
             {
@@ -23,6 +24,15 @@ namespace TwoZeroFourEight.Score.Classes
                     _bestScore = _score;
                 }
             }
+=======
+            }
+            set {
+				if (_score > _bestScore)
+				{
+					_bestScore = _score;
+				}
+			}
+>>>>>>> e6b183b92ae3b63db532bceb674ba6e87fa428e3:TwoZeroFourEight/Services/Classes/Score.cs
         }
 
     }

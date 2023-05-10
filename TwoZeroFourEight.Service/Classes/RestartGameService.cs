@@ -13,7 +13,7 @@ namespace TwoZeroFourEight.Services.Classes
 		{
 			_score.HighestTileScore = array.Cast<int>().Max();
 			_score.ManageLastScore = _score.ManageScore;
-			_score.ManageBestScore = _score.ManageLastScore;
+			_score.ManageBestScore = _score.ManageScore;
 			_score.ManageScore = 0;
 			int size = array.GetLength(0);
 			for (int i = 0; i < size; i++)
