@@ -16,7 +16,7 @@ namespace TwoZeroFourEight.UserInterfaces.Classes
         public void GameOverPrint(int size)
         {
             string message = _stateManager.PrintGameResult(size);
-            if (message != string.Empty)
+            if (!string.IsNullOrEmpty(message))
             {
                 _logger.Clear();
                 _logger.WriteLine(message);

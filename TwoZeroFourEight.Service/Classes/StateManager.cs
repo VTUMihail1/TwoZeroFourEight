@@ -6,12 +6,12 @@ namespace TwoZeroFourEight.Services.Classes
     {
         private readonly IResultManager _resultManager;
         private readonly IRestartGameService _restart;
-        private readonly IAddRandomService _add;
+        private readonly IAddRandomManager _addManager;
 
-        public StateManager(IResultManager resultManager, IRestartGameService restart, IAddRandomService add)
+        public StateManager(IResultManager resultManager, IRestartGameService restart, IAddRandomManager addManager)
         {
             _restart = restart;
-            _add = add;
+            _addManager = addManager;
             _resultManager = resultManager;
         }
         public void GameServices(ConsoleKeyInfo key, int[,] array)
@@ -26,7 +26,7 @@ namespace TwoZeroFourEight.Services.Classes
             }
             else if (key.Key >= ConsoleKey.LeftArrow && key.Key <= ConsoleKey.DownArrow)
             {
-                _add.AddRandom(array);
+                _addManager.AddManage(array);
             }
 
         }

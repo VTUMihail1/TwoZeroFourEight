@@ -28,6 +28,7 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IScore>().To<Score>().InSingletonScope();
 			Bind<IServicesManager>().To<ServicesManager>();
 			Bind<IInitializeBoard>().To<InitializeBoard>();
+			Bind<IAddRandomManager>().To<AddRandomManager>();
 			Bind<IAddRandomService>().To<AddRandomService>();
 			Bind<IPrintBoardManager>().To<PrintBoardManager>();
 			Bind<IPrintStateManager>().To<PrintStateManager>();
