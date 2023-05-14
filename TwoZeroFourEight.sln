@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoZeroFourEight.UserInterf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoZeroFourEight.OnConfiguration", "TwoZeroFourEight.OnConfiguration\TwoZeroFourEight.OnConfiguration.csproj", "{9A0476D1-1D3B-446C-A0CD-BBA6D46C537A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoZeroFourEight.Services.UnitTests", "TwoZeroFourEight.Services.UnitTests\TwoZeroFourEight.Services.UnitTests.csproj", "{FF639D8A-ABBA-476D-9814-DFCFE03867A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoZeroFourEight.UnitTests", "TwoZeroFourEight.Services.UnitTests\TwoZeroFourEight.UnitTests.csproj", "{FF639D8A-ABBA-476D-9814-DFCFE03867A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,14 +3,14 @@ using TwoZeroFourEight.Services.Classes;
 using TwoZeroFourEight.Services.Interfaces;
 using TwoZeroFourEight.UserInterfaces.Classes;
 
-namespace TwoZeroFourEight.Services.UnitTests
+namespace TwoZeroFourEight.UnitTests.Tests
 {
     [TestFixture]
     public class AddRandomServiceTests
     {
         private IAddRandomService service;
-        [SetUp] 
-        public void SetUp() 
+        [SetUp]
+        public void SetUp()
         {
             service = new AddRandomService(new Random());
         }

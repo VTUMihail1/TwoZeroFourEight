@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TwoZeroFourEight.Services.Classes;
 using TwoZeroFourEight.Services.Interfaces;
 
-namespace TwoZeroFourEight.Services.UnitTests
+namespace TwoZeroFourEight.UnitTests.Tests
 {
     [TestFixture]
     public class GameMovesTests

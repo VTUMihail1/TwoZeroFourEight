@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TwoZeroFourEight.Services.Classes;
 using TwoZeroFourEight.Services.Interfaces;
 
-namespace TwoZeroFourEight.Services.UnitTests
+namespace TwoZeroFourEight.UnitTests.Tests
 {
     public class MovesManagerTests
     {
@@ -35,7 +35,7 @@ namespace TwoZeroFourEight.Services.UnitTests
                 {0,0,4,4 }
             };
 
-            movesManager.CheckMoves(cki,array);
+            movesManager.CheckMoves(cki, array);
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }

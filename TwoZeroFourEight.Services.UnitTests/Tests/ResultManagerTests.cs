@@ -2,19 +2,21 @@
 using TwoZeroFourEight.Services.Classes;
 using TwoZeroFourEight.Services.Interfaces;
 
-namespace TwoZeroFourEight.Services.UnitTests
+namespace TwoZeroFourEight.UnitTests.Tests
 {
     [TestFixture]
-    public class YouLostServiceTests
+    public class ResultManagerTests
     {
-        private IYouLostService service;
+        private IResultManager resultManager;
         [SetUp]
-        public void SetUp()
+        public void Setup()
         {
-            service = new YouLostService();
+            IYouWonService youWon = new YouWonService();
+            IYouLostService youLost = new YouLostService();
+            resultManager = new ResultManager(youWon, youLost);
         }
         [Test]
-        public void YouLost_ArrayIsntFull_ReturnsFalse()
+        public void ManageResult_DidntWinAndDidntLose_ReturnsFalse()
         {
             int[,] array = new int[4, 4]
             {
@@ -24,27 +26,27 @@ namespace TwoZeroFourEight.Services.UnitTests
                 {2,2,2,2 }
             };
 
-            bool result = service.YouLost(array);
+            bool result = resultManager.ManageResult(array);
 
             Assert.That(result, Is.False);
         }
         [Test]
-        public void YouLost_ArrayIsFullButMovesAreAvailable_ReturnsFalse()
+        public void ManageResult_WonTheGame_ReturnsTrue()
         {
             int[,] array = new int[4, 4]
             {
-                {2,2,2,2 },
+                {2048,0,0,0 },
                 {2,2,2,2 },
                 {2,2,2,2 },
                 {2,2,2,2 }
             };
 
-            bool result = service.YouLost(array);
+            bool result = resultManager.ManageResult(array);
 
-            Assert.That(result, Is.False);
+            Assert.That(result, Is.True);
         }
         [Test]
-        public void YouLost_ArrayIsFullAndNoMovesAreAvailable_ReturnsTrue()
+        public void ManageResult_LostTheGame_ReturnsTrue()
         {
             int[,] array = new int[4, 4]
             {
@@ -54,7 +56,7 @@ namespace TwoZeroFourEight.Services.UnitTests
                 {4,2,4,2 }
             };
 
-            bool result = service.YouLost(array);
+            bool result = resultManager.ManageResult(array);
 
             Assert.That(result, Is.True);
         }
