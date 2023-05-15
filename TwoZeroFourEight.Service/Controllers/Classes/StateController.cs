@@ -1,6 +1,5 @@
 ﻿using TwoZeroFourEight.Backend.Services.Interfaces;
 using TwoZeroFourEight.Backend.Controllers.Interfaces;
-using TwoZeroFourEight.Backend.Services.Classes;
 
 namespace TwoZeroFourEight.Backend.Controllers.Classes
 {
@@ -24,7 +23,7 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
             }
             else if (key.Key == ConsoleKey.Escape)
             {
-                Environment.Exit(1);
+                Environment.Exit(0);
             }
             else if (key.Key >= ConsoleKey.LeftArrow && key.Key <= ConsoleKey.DownArrow)
             {

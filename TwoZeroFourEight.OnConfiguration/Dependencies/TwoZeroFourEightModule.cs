@@ -15,29 +15,29 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 		public override void Load()
 		{
 			Bind<Random>().ToSelf();
-			Bind<ILoggerService>().To<LoggerService>();
-			Bind<IAddColorService>().To<AddColorService>();
-			Bind<IPrintMenuService>().To<PrintMenuService>();
-			Bind<IGameMovesService>().To<GameMovesService>();
 			Bind<IUIController>().To<UIController>();
-			Bind<IPrintBoardService>().To<PrintBoardService>();
-			Bind<IPrintStateService>().To<PrintStateService>();
-			Bind<IGameController>().To<GameController>();
-			Bind<IPrintHeadingService>().To<PrintHeadingService>();
-			Bind<IGameMovesController>().To<GameMovesController>();
-			Bind<IStateController>().To<StateController>();
-			Bind<IResultController>().To<ResultController>();
 			Bind<IYouWinService>().To<YouWinService>();
 			Bind<IYouLostService>().To<YouLostService>();
-			Bind<IScoreService>().To<ScoreService>().InSingletonScope();
-			Bind<IServicesController>().To<ServicesController>();
-			Bind<IInitializeBoardService>().To<InitializeBoardService>();
-			Bind<IAddRandomController>().To<AddRandomController>();
+			Bind<IGameController>().To<GameController>();
+			Bind<IAddColorService>().To<AddColorService>();
+			Bind<IStateController>().To<StateController>();
+			Bind<IResultController>().To<ResultController>();
+			Bind<IPrintMenuService>().To<PrintMenuService>();
+			Bind<IGameMovesService>().To<GameMovesService>();
 			Bind<IAddRandomService>().To<AddRandomService>();
+			Bind<IPrintBoardService>().To<PrintBoardService>();
+			Bind<IPrintStateService>().To<PrintStateService>();
+			Bind<IRestartGameService>().To<RestartGameService>();
+			Bind<IPrintHeadingService>().To<PrintHeadingService>();
+			Bind<IGameMovesController>().To<GameMovesController>();
+			Bind<IAddRandomController>().To<AddRandomController>();
 			Bind<IPrintBoardController>().To<PrintBoardController>();
 			Bind<IPrintStateController>().To<PrintStateController>();
-			Bind<IRestartGameService>().To<RestartGameService>();
+			Bind<IGameEngineController>().To<GameEngineController>();
 			Bind<IPrintResultController>().To<PrintResultController>();
+			Bind<IScoreService>().To<ScoreService>().InSingletonScope();
+			Bind<IInitializeBoardService>().To<InitializeBoardService>();
+			Bind<ILoggerService>().To<LoggerService>().InSingletonScope();
 			Bind<IPrintPressAnyButtonService>().To<PrintPressAnyButtonService>();
 			Bind<ITwoZeroFourEightGameController>().To<TwoZeroFourEightGameController>();
 		}

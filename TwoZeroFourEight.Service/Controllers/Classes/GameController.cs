@@ -5,12 +5,12 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 {
     public class GameController : IGameController
     {
-        private readonly IServicesController _servicesController;
+        private readonly IGameEngineController _gameEngineController;
         private readonly IUIController _uiController;
 
-        public GameController(IServicesController servicesController, IUIController uiController)
+        public GameController(IGameEngineController gameEngineController, IUIController uiController)
         {
-            _servicesController = servicesController;
+            _gameEngineController = gameEngineController;
             _uiController = uiController;
         }
         public void Start(int[,] array)
@@ -18,7 +18,7 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
             while (true)
             {
                 _uiController.PrintGame(array);
-                _servicesController.RunGame(array);
+                _gameEngineController.RunGame(array);
             }
         }
     }

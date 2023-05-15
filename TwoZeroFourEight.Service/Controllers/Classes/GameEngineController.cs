@@ -2,11 +2,11 @@
 
 namespace TwoZeroFourEight.Backend.Controllers.Classes
 {
-    public class ServicesController : IServicesController
+    public class GameEngineController : IGameEngineController
     {
         private readonly IGameMovesController _gameMovesController;
         private readonly IStateController _stateController;
-        public ServicesController(IGameMovesController gameMovesController, IStateController stateController)
+        public GameEngineController(IGameMovesController gameMovesController, IStateController stateController)
         {
             _gameMovesController = gameMovesController;
             _stateController = stateController;

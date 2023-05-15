@@ -1,6 +1,6 @@
 ﻿namespace TwoZeroFourEight.Backend.Controllers.Interfaces
 {
-    public interface IServicesController
+    public interface IGameEngineController
     {
         void RunGame(int[,] array);
     }
