@@ -1,8 +1,8 @@
 ﻿using Ninject;
+using TwoZeroFourEight.Backend.Controllers.Interfaces;
 using TwoZeroFourEight.OnConfigurationFolder.Dependencies;
-using TwoZeroFourEight.Services.Interfaces;
 
 IKernel kernel = new StandardKernel(new TwoZeroFourEightModule());
-ITwoZeroFourEightGame tzfe = kernel.Get<ITwoZeroFourEightGame>();
+ITwoZeroFourEightGameController tzfe = kernel.Get<ITwoZeroFourEightGameController>();
 
 tzfe.Play(4);

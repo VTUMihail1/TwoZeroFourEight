@@ -1,8 +1,12 @@
 ﻿using Ninject.Modules;
-using TwoZeroFourEight.Services.Classes;
-using TwoZeroFourEight.Services.Interfaces;
-using TwoZeroFourEight.UserInterfaces.Classes;
-using TwoZeroFourEight.UserInterfaces.Interfaces;
+using TwoZeroFourEight.Backend.Controllers.Classes;
+using TwoZeroFourEight.Backend.Controllers.Interfaces;
+using TwoZeroFourEight.Backend.Services.Classes;
+using TwoZeroFourEight.Backend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Controllers.Classes;
+using TwoZeroFourEight.Frontend.Controllers.Interfaces;
+using TwoZeroFourEight.Frontend.Services.Classes;
+using TwoZeroFourEight.Frontend.Services.Interfaces;
 
 namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 {
@@ -11,31 +15,31 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 		public override void Load()
 		{
 			Bind<Random>().ToSelf();
-			Bind<ILogger>().To<Logger>();
-			Bind<IAddColor>().To<AddColor>();
-			Bind<IPrintMenu>().To<PrintMenu>();
-			Bind<IGameMoves>().To<GameMoves>();
-			Bind<IUIManager>().To<UIManager>();
-			Bind<IPrintBoard>().To<PrintBoard>();
-			Bind<IPrintState>().To<PrintState>();
-			Bind<IGameManager>().To<GameManager>();
-			Bind<IPrintHeading>().To<PrintHeading>();
-			Bind<IMovesManager>().To<MovesManager>();
-			Bind<IStateManager>().To<StateManager>();
-			Bind<IResultManager>().To<ResultManager>();
-			Bind<IYouWonService>().To<YouWonService>();
+			Bind<ILoggerService>().To<LoggerService>();
+			Bind<IAddColorService>().To<AddColorService>();
+			Bind<IPrintMenuService>().To<PrintMenuService>();
+			Bind<IGameMovesService>().To<GameMovesService>();
+			Bind<IUIController>().To<UIController>();
+			Bind<IPrintBoardService>().To<PrintBoardService>();
+			Bind<IPrintStateService>().To<PrintStateService>();
+			Bind<IGameController>().To<GameController>();
+			Bind<IPrintHeadingService>().To<PrintHeadingService>();
+			Bind<IGameMovesController>().To<GameMovesController>();
+			Bind<IStateController>().To<StateController>();
+			Bind<IResultController>().To<ResultController>();
+			Bind<IYouWinService>().To<YouWinService>();
 			Bind<IYouLostService>().To<YouLostService>();
-			Bind<IScore>().To<Score>().InSingletonScope();
-			Bind<IServicesManager>().To<ServicesManager>();
-			Bind<IInitializeBoard>().To<InitializeBoard>();
-			Bind<IAddRandomManager>().To<AddRandomManager>();
+			Bind<IScoreService>().To<ScoreService>().InSingletonScope();
+			Bind<IServicesController>().To<ServicesController>();
+			Bind<IInitializeBoardService>().To<InitializeBoardService>();
+			Bind<IAddRandomController>().To<AddRandomController>();
 			Bind<IAddRandomService>().To<AddRandomService>();
-			Bind<IPrintBoardManager>().To<PrintBoardManager>();
-			Bind<IPrintStateManager>().To<PrintStateManager>();
+			Bind<IPrintBoardController>().To<PrintBoardController>();
+			Bind<IPrintStateController>().To<PrintStateController>();
 			Bind<IRestartGameService>().To<RestartGameService>();
-			Bind<IPrintResultManager>().To<PrintResultManager>();
-			Bind<IPrintPressAnyButton>().To<PrintPressAnyButton>();
-			Bind<ITwoZeroFourEightGame>().To<TwoZeroFourEightGame>();
+			Bind<IPrintResultController>().To<PrintResultController>();
+			Bind<IPrintPressAnyButtonService>().To<PrintPressAnyButtonService>();
+			Bind<ITwoZeroFourEightGameController>().To<TwoZeroFourEightGameController>();
 		}
 	}
 }

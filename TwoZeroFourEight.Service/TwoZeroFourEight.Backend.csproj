@@ -1,19 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ninject" Version="3.3.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\TwoZeroFourEight.OnConfiguration\TwoZeroFourEight.OnConfiguration.csproj" />
-    <ProjectReference Include="..\TwoZeroFourEight.Service\TwoZeroFourEight.Backend.csproj" />
     <ProjectReference Include="..\TwoZeroFourEight.UserInterface\TwoZeroFourEight.Frontend.csproj" />
   </ItemGroup>
 

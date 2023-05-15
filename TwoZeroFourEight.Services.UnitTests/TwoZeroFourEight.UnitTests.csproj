@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TwoZeroFourEight.Service\TwoZeroFourEight.Services.csproj" />
+    <ProjectReference Include="..\TwoZeroFourEight.Service\TwoZeroFourEight.Backend.csproj" />
+    <ProjectReference Include="..\TwoZeroFourEight.UserInterface\TwoZeroFourEight.Frontend.csproj" />
   </ItemGroup>
 
 </Project>
