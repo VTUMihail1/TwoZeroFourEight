@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TwoZeroFourEight.Backend\TwoZeroFourEight.Backend.csproj" />
+    <ProjectReference Include="..\TwoZeroFourEight.Frontend\TwoZeroFourEight.Frontend.csproj" />
     <ProjectReference Include="..\TwoZeroFourEight.OnConfiguration\TwoZeroFourEight.OnConfiguration.csproj" />
-    <ProjectReference Include="..\TwoZeroFourEight.Service\TwoZeroFourEight.Backend.csproj" />
-    <ProjectReference Include="..\TwoZeroFourEight.UserInterface\TwoZeroFourEight.Frontend.csproj" />
   </ItemGroup>
 
 </Project>
