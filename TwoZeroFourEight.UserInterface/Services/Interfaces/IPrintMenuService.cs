@@ -2,6 +2,8 @@
 {
     public interface IPrintMenuService
     {
+
         void PrintMenu();
+
     }
 }

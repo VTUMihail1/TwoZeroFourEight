@@ -10,12 +10,16 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
     public class GameMovesServiceTests
     {
         private IGameMovesService gameMovesService;
+
         [SetUp]
         public void SetUp()
         {
             var scoreService = new Mock<IScoreService>();
+
             gameMovesService = new GameMovesService(scoreService.Object);
         }
+
+
         [Test]
         public void MoveRight_MoveTilesToRightAndMerges_CorrectlyMergesAndShiftsTiles()
         {
@@ -38,6 +42,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveRight_MoveTilesToRight_CorrectlyShiftsTiles()
         {
@@ -60,6 +66,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveRight_MaxTiles_ReturnsTheSameArray()
         {
@@ -82,6 +90,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveLeft_MoveTilesToLeftAndMerges_CorrectlyMergesAndShiftsTiles()
         {
@@ -104,6 +114,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveLeft_MoveTilesToLeft_CorrectlyShiftsTiles()
         {
@@ -126,6 +138,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveLeft_MaxTiles_ReturnsTheSameArray()
         {
@@ -148,6 +162,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveUp_MoveTilesToTheTopAndMerges_CorrectlyMergesAndShiftsTiles()
         {
@@ -170,6 +186,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveUp_MoveTilesToTheTop_CorrectlyShiftsTiles()
         {
@@ -192,6 +210,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveUp_MaxTiles_ReturnsTheSameArray()
         {
@@ -214,6 +234,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveDown_MoveTilesToTheBottomAndMerges_CorrectlyMergesAndShiftsTiles()
         {
@@ -236,6 +258,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveDown_MoveTilesToTheBottom_CorrectlyShiftsTiles()
         {
@@ -258,6 +282,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
+
         [Test]
         public void MoveDown_MaxTiles_ReturnsTheSameArray()
         {
@@ -280,5 +306,6 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array, Is.EqualTo(arrayResult));
         }
+
     }
 }

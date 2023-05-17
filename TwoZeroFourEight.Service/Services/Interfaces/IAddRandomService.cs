@@ -2,7 +2,9 @@
 {
     public interface IAddRandomService
     {
+
         void AddRandomElement(int[,] array);
+
     }
 }
 

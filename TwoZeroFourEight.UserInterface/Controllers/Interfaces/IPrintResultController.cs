@@ -2,6 +2,8 @@
 {
     public interface IPrintResultController
     {
+
         void PrintGameOverScreen(int size);
+
     }
 }

@@ -2,7 +2,9 @@
 {
     public interface IRestartGameService
     {
+
         void Restart(int[,] array);
+
     }
 }
 

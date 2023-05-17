@@ -10,15 +10,22 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
     public class ResultControllerTests
     {
         private Mock<IYouWinService> youWinService;
+
         private Mock<IYouLostService> youLostService;
+
         private IResultController resultController;
+
         [SetUp]
         public void Setup()
         {
             youWinService = new Mock<IYouWinService>();
+
             youLostService = new Mock<IYouLostService>();
+
             resultController = new ResultController(youWinService.Object, youLostService.Object);
         }
+
+
         [Test]
         public void Result_DidntWinAndDidntLose_ReturnsFalse()
         {
@@ -29,6 +36,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             Assert.That(result, Is.False);
         }
+
+
         [Test]
         public void Result_WonTheGame_ReturnsTrue()
         {
@@ -39,6 +48,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             Assert.That(result, Is.True);
         }
+
+
         [Test]
         public void Result_LostTheGame_ReturnsTrue()
         {

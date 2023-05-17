@@ -10,13 +10,18 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
     public class GameMovesControllerTests
     {
         private Mock<IGameMovesService> gameMovesService;
+
         private IGameMovesController gameMovesController;
+
         [SetUp]
         public void SetUp()
         {
             gameMovesService = new Mock<IGameMovesService>();
+
             gameMovesController = new GameMovesController(gameMovesService.Object);
         }
+
+
         [Test]
         public void InputMoves_ConsoleKeyIsRight_CallsTheMoveRightMethod()
         {
@@ -26,6 +31,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             gameMovesService.Verify(x => x.MoveRight(It.IsAny<int[,]>()), Times.Exactly(1));
         }
+
+
         [Test]
         public void InputMoves_ConsoleKeyIsLeft_CallsTheMoveLeftMethod()
         {
@@ -35,6 +42,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             gameMovesService.Verify(x => x.MoveLeft(It.IsAny<int[,]>()), Times.Exactly(1));
         }
+
+
         [Test]
         public void InputMoves_ConsoleKeyIsUp_CallsTheMoveUpMethod()
         {
@@ -44,6 +53,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             gameMovesService.Verify(x => x.MoveUp(It.IsAny<int[,]>()), Times.Exactly(1));
         }
+
+
         [Test]
         public void InputMoves_ConsoleKeyIsDown_CallsTheMoveDownMethod()
         {

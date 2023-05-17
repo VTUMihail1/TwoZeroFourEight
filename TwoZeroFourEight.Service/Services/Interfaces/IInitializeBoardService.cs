@@ -2,7 +2,9 @@
 {
     public interface IInitializeBoardService
     {
+
         int[,] InitializeBoard(int size);
+
     }
 }
 

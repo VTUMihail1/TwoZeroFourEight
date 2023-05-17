@@ -2,6 +2,8 @@
 {
     public interface ITwoZeroFourEightGameController
     {
+
         void Play(int size);
+
     }
 }

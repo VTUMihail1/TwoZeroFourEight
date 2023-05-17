@@ -8,11 +8,14 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ServicesTests
     public class ScoreServiceTests
     {
         private IScoreService scoreService;
+
         [SetUp]
         public void Setup()
         {
             scoreService = new ScoreService();
         }
+
+
         [Test]
         public void ManageBestScore_ScoreIsLowerOrEqualToTheBestScore_BestScoreDoesntChange()
         {
@@ -23,6 +26,8 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ServicesTests
 
             Assert.That(scoreService.ManageBestScore, Is.Not.EqualTo(scoreService.ManageCurrentScore));
         }
+
+
         [Test]
         public void ManageBestScore_ScoreIsHigherThanBestScore_SetsTheScoreAsTheBestScore()
         {

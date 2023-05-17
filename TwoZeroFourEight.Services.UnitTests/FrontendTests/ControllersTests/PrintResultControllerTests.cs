@@ -10,18 +10,26 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
     public class PrintResultControllerTests
     {
         private Mock<ILoggerService> loggerService;
+
         private Mock<IPrintHeadingService> printHeadingService;
+
         private Mock<IPrintStateController> printStateController;
+
         private IPrintResultController printResultController;
 
         [SetUp]
         public void SetUp()
         {
             printStateController = new Mock<IPrintStateController>();
+
             printHeadingService = new Mock<IPrintHeadingService>();
+
             loggerService = new Mock<ILoggerService>();
+
             printResultController = new PrintResultController(printStateController.Object, loggerService.Object, printHeadingService.Object);
         }
+
+
         [Test]
         public void PrintGameOverScreen_StringIsEmpty_DoesntWriteTheResultInTheConsole()
         {
@@ -31,6 +39,8 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
             printHeadingService.Verify(x => x.PrintHeading(4), Times.Exactly(0));
         }
+
+
         [Test]
         public void PrintGameOverScreen_StringIsNotEmpty_WritesTheResultInTheConsole()
         {

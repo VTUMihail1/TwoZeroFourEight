@@ -2,6 +2,8 @@
 {
     public interface IYouWinService
     {
+
         bool YouWin(int[,] array);
+
     }
 }

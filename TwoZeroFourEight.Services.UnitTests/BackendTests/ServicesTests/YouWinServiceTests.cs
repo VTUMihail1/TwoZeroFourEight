@@ -8,11 +8,14 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
     public class YouWInServiceTests
     {
         private IYouWinService youWinService;
+
         [SetUp]
         public void SetUp()
         {
             youWinService = new YouWinService();
         }
+
+
         [Test]
         public void YouWin_NoMaxTileInTheArray_ReturnsFalse()
         {
@@ -28,6 +31,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(result, Is.False);
         }
+
+
         [Test]
         public void YouWin_MaxTileInTheArray_ReturnsTrue()
         {

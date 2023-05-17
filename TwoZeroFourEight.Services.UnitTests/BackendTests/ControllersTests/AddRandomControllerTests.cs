@@ -10,13 +10,18 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
     public class AddRandomControllerTests
     {
         private Mock<IAddRandomService> addRandomService;
+
         private IAddRandomController addRandomController;
+
         [SetUp]
         public void SetUp()
         {
             addRandomService = new Mock<IAddRandomService>();
+
             addRandomController = new AddRandomController(addRandomService.Object);
         }
+
+
         [Test]
         public void Add_WhenArrayIsEmpty_ExcecutesTheAddMethodTwice()
         {
@@ -32,6 +37,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             addRandomService.Verify(x => x.AddRandomElement(array), Times.Exactly(2));
         }
+
+
         [Test]
         public void Add_WhenArrayHasOneOrMoreElementsAndIsntAtMaxCapacity_ExcecutesTheAddMethodOnce()
         {
@@ -47,6 +54,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             addRandomService.Verify(x => x.AddRandomElement(array), Times.Exactly(1));
         }
+
+
         [Test]
         public void Add_WhenArrayIsAtMaxCapacity_CallsTheAddMethodButDoesntExcecuteIt()
         {

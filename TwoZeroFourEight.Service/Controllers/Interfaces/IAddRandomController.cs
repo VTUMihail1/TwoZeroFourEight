@@ -2,7 +2,9 @@
 {
     public interface IAddRandomController
     {
+
         void Add(int[,] array);
+
     }
 }
 

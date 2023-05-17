@@ -2,6 +2,8 @@
 {
     public interface IUIController
     {
+
         void PrintGame(int[,] array);
+
     }
 }

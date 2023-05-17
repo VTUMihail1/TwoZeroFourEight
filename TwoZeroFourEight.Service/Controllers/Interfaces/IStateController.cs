@@ -2,6 +2,8 @@
 {
     public interface IStateController
     {
+
         void InputStates(ConsoleKeyInfo key, int[,] array);
+
     }
 }

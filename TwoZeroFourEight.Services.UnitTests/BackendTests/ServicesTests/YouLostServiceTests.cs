@@ -8,11 +8,14 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
     public class YouLostServiceTests
     {
         private IYouLostService youLostService;
+
         [SetUp]
         public void SetUp()
         {
             youLostService = new YouLostService();
         }
+
+
         [Test]
         public void YouLost_ArrayIsntFull_ReturnsFalse()
         {
@@ -28,6 +31,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(result, Is.False);
         }
+
+
         [Test]
         public void YouLost_ArrayIsFullButMovesAreAvailable_ReturnsFalse()
         {
@@ -43,6 +48,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(result, Is.False);
         }
+
+
         [Test]
         public void YouLost_ArrayIsFullAndNoMovesAreAvailable_ReturnsTrue()
         {

@@ -2,6 +2,8 @@
 {
     public interface IPrintPressAnyButtonService
     {
+
         void PrintPressAnyButton(int size);
+
     }
 }

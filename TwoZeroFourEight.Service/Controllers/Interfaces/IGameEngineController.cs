@@ -2,7 +2,9 @@
 {
     public interface IGameEngineController
     {
+
         void RunGame(int[,] array);
+
     }
 }
 

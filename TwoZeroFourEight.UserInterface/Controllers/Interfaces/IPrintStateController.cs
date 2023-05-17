@@ -2,6 +2,8 @@
 {
     public interface IPrintStateController
     {
+
         string PrintGameResult(int size);
+
     }
 }

@@ -10,17 +10,26 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
     public class StateControllerTests
     {
         private Mock<IRestartGameService> restartService;
+
         private Mock<IResultController> resultController;
+
         private Mock<IAddRandomController> addRandomController;
+
         private IStateController stateController;
+
         [SetUp]
         public void SetUp()
         {
             restartService = new Mock<IRestartGameService>();
+
             resultController = new Mock<IResultController>();
+
             addRandomController = new Mock<IAddRandomController>();
+
             stateController = new StateController(resultController.Object, addRandomController.Object, restartService.Object);
         }
+
+
         [Test]
         public void InputStates_ConsoleKeyIsRightOrGameIsOver_RestartsTheGame()
         {
@@ -30,6 +39,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             restartService.Verify(x => x.Restart(It.IsAny<int[,]>()), Times.Exactly(1));
         }
+
+
         //WOKING ON THIS TEST
 
         //[Test]
@@ -41,6 +52,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
         //    Assert.Throws<Exception>(() => Environment.Exit(1));
         //}
+
+
         [Test]
         [TestCase(ConsoleKey.UpArrow)]
         [TestCase(ConsoleKey.DownArrow)]
@@ -54,5 +67,6 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 
             addRandomController.Verify(x => x.Add(It.IsAny<int[,]>()), Times.Exactly(1));
         }
+
     }
 }

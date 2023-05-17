@@ -2,6 +2,8 @@
 {
     public interface IResultController
     {
+
         bool Result(int[,] array);
+
     }
 }

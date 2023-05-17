@@ -8,11 +8,14 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
     public class AddRandomServiceTests
     {
         private IAddRandomService addRandomService;
+
         [SetUp]
         public void SetUp()
         {
             addRandomService = new AddRandomService(new Random());
         }
+
+
         [Test]
         public void AddRandomElement_WhenArrayIsntAtMaxCapacity_AddOneElementToTheArray()
         {
@@ -28,6 +31,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 
             Assert.That(array.Cast<int>().Count(num => num == 2), Is.EqualTo(3));
         }
+
+
         [Test]
         public void AddRandomElement_WhenArrayIsAtMaxCapacity_ReturnsTheSameArray()
         {

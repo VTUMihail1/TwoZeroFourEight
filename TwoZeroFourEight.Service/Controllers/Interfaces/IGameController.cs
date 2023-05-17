@@ -2,6 +2,8 @@
 {
     public interface IGameController
     {
+
         void Start(int[,] array);
+
     }
 }

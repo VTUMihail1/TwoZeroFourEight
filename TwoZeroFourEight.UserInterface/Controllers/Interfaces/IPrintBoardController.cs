@@ -2,6 +2,8 @@
 {
     public interface IPrintBoardController
     {
+
         void PrintGameBoard(int[,] array);
+
     }
 }
