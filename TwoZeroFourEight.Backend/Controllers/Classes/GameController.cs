@@ -10,11 +10,9 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
         private readonly IUIController _uiController;
 
-
         public GameController(IGameEngineController gameEngineController, IUIController uiController)
         {
             _gameEngineController = gameEngineController;
-
             _uiController = uiController;
         }
 
@@ -24,9 +22,9 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
             while (true)
             {
                 _uiController.PrintGame(array);
-
                 _gameEngineController.RunGame(array);
             }
+
         }
 
     }

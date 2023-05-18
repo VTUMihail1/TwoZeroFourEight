@@ -19,9 +19,9 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
         public void Add(int[,] array)
         {
-            bool arrayChanged = arrayClone == null || !array.Cast<int>().SequenceEqual(arrayClone.Cast<int>());
 
-            bool arrayIsEmpty = array.Cast<int>().All(tile => tile == 0);
+            bool arrayIsEmpty = array.Cast<int>().All(tile => tile == StaticData.emptySpot);
+            bool arrayChanged = arrayClone == null || !array.Cast<int>().SequenceEqual(arrayClone.Cast<int>());
 
 			if (arrayChanged)
             {

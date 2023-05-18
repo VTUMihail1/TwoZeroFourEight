@@ -5,9 +5,9 @@ namespace TwoZeroFourEight.Backend.Services.Classes
     public class InitializeBoardService : IInitializeBoardService
     {
 
-        public int[,] InitializeBoard(int size)
+        public int[,] InitializeBoard()
         {
-            int[,] array = new int[size, size];
+            int[,] array = new int[StaticData.size, StaticData.size];
 
             return array;
         }

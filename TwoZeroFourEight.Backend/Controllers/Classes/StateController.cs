@@ -12,24 +12,18 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
         private readonly IRestartGameService _restartGameService;
 
-
         public StateController(IResultController resultController, IAddRandomController addController, IRestartGameService restartGameService)
         {
             _addController = addController;
-
             _resultController = resultController;
-
             _restartGameService = restartGameService;
         }
-
 
         public void InputStates(ConsoleKeyInfo key, int[,] array)
         {
 
-            bool restart = key.Key == ConsoleKey.R || _resultController.Result(array);
-
             bool exit = key.Key == ConsoleKey.Escape;
-
+            bool restart = key.Key == ConsoleKey.R || _resultController.Result(array);
             bool pressedArrowKey = key.Key >= ConsoleKey.LeftArrow && key.Key <= ConsoleKey.DownArrow;
 
 
@@ -38,12 +32,10 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
                 _restartGameService.Restart(array);
             }
 
-
             else if (exit)
             {
                 Environment.Exit(0);
             }
-
 
             else if (pressedArrowKey)
             {
@@ -51,6 +43,7 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
             }
 
         }
+
     }
 }
 

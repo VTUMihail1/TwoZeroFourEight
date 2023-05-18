@@ -7,26 +7,27 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
         private readonly Random _random;
 
-
         public AddRandomService(Random random)
         {
             _random = random;
         }
 
-
         public void AddRandomElement(int[,] array)
         {
-            int size = array.GetLength(0);
 
-            int random = _random.Next(size * size);
+            int random = _random.Next(StaticData.numberOfSpots);
 
-            while (array.Cast<int>().Any(tile => tile == 0))
+            bool arrayIsEmpty = array.Cast<int>().Any(tile => tile == StaticData.emptySpot);
+
+            while (arrayIsEmpty)
             {
-                random = _random.Next(16);
+                random = _random.Next(StaticData.numberOfSpots);
 
-                if (array[random / size, random % size] == 0)
+                bool freeSpot = array[random / StaticData.size, random % StaticData.size] == StaticData.emptySpot;
+
+                if (freeSpot)
                 {
-                    array[random / size, random % size] = 2;
+                    array[random / StaticData.size, random % StaticData.size] = StaticData.minTile;
 
                     return;
                 }
@@ -34,6 +35,7 @@ namespace TwoZeroFourEight.Backend.Services.Classes
             }
 
         }
+
     }
 }
 

@@ -5,18 +5,7 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 {
     public class GameMovesService : IGameMovesService
     {
-        private IScoreService _scoreService;
-
-        public GameMovesService(IScoreService scoreService)
-        {
-            _scoreService = scoreService;
-        }
-
-        private int _size;
-
         private int sum;
-
-        private int minValue;
         
         private int currentIndex;
 
@@ -26,24 +15,32 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
         private bool currentElementIsZero;
 
+        private bool currentElementIsNotZero;
+
+        private IScoreService _scoreService;
+
+        public GameMovesService(IScoreService scoreService)
+        {
+            _scoreService = scoreService;
+        }
+
+
         public void MoveLeft(int[,] array)
         {
-            _size = array.GetLength(0);
-            minValue = 0;
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
                 currentIndex = 0;
                 currentNumber = 0;
 
-                for (int j = 0; j < _size; j++)
+                for (int j = 0; j < StaticData.size; j++)
                 {
+                    currentElementIsNotZero = array[i, j] != StaticData.emptySpot;
 
-                    if (array[i, j] != minValue)
+                    if (currentElementIsNotZero)
                     {
                         elementsAreEqual = currentNumber == array[i, j];
-
-                        currentElementIsZero = currentNumber == minValue;
+                        currentElementIsZero = currentNumber == StaticData.emptySpot;
 
 						if (elementsAreEqual)
                         {
@@ -53,15 +50,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                             _scoreService.ManageCurrentScore += currentNumber;
 
-                            currentNumber = minValue;
+                            currentNumber = StaticData.emptySpot;
                         }
-
 
                         else if (currentElementIsZero)
                         {
                             currentNumber = array[i, j];
                         }
-
 
                         else
                         {
@@ -69,11 +64,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                             currentNumber = array[i, j];
                         }
 
-                        array[i, j] = minValue;
+                        array[i, j] = StaticData.emptySpot;
                     }
                 }
 
-                if (currentNumber != minValue)
+                currentElementIsZero = currentNumber == StaticData.emptySpot;
+
+                if (currentElementIsZero)
                 {
                     array[i, currentIndex] = currentNumber;
                 }
@@ -81,22 +78,21 @@ namespace TwoZeroFourEight.Backend.Services.Classes
         }
         public void MoveUp(int[,] array)
         {
-            _size = array.GetLength(0);
-            minValue = 0;
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
                 currentIndex = 0;
                 currentNumber = 0;
 
-                for (int j = 0; j < _size; j++)
+                for (int j = 0; j < StaticData.size; j++)
                 {
+                    currentElementIsNotZero = array[j, i] != StaticData.emptySpot;
 
-                    if (array[j, i] != minValue)
+                    if (currentElementIsNotZero)
                     {
                         elementsAreEqual = currentNumber == array[j, i];
 
-                        currentElementIsZero = currentNumber == minValue;
+                        currentElementIsZero = currentNumber == StaticData.emptySpot;
 
 						if (elementsAreEqual)
                         {
@@ -106,7 +102,7 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                             _scoreService.ManageCurrentScore += currentNumber;
 
-                            currentNumber = minValue;
+                            currentNumber = StaticData.emptySpot;
                         }
 
                         else if (currentElementIsZero)
@@ -120,11 +116,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                             currentNumber = array[j, i];
                         }
 
-                        array[j, i] = minValue;
+                        array[j, i] = StaticData.emptySpot;
                     }
                 }
 
-                if (currentNumber != minValue)
+                currentElementIsZero = currentNumber == StaticData.emptySpot;
+
+                if (!currentElementIsZero)
                 {
                     array[currentIndex, i] = currentNumber;
                 }
@@ -134,29 +132,28 @@ namespace TwoZeroFourEight.Backend.Services.Classes
         }
         public void MoveRight(int[,] array)
         {
-            _size = array.GetLength(0);
-            minValue = 0;
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
-                currentIndex = _size - 1;
+                currentIndex = StaticData.size - 1;
                 currentNumber = 0;
 
-                for (int j = _size - 1; j >= 0; j--)
+                for (int j = StaticData.size - 1; j >= 0; j--)
                 {
+                    currentElementIsNotZero = array[i, j] != StaticData.emptySpot;
 
-                    if (array[i, j] != minValue)
+                    if (currentElementIsNotZero)
                     {
                         elementsAreEqual = currentNumber == array[i, j];
 
-                        currentElementIsZero = currentNumber == minValue;
+                        currentElementIsZero = currentNumber == StaticData.emptySpot;
 
 						if (elementsAreEqual)
                         {
                             sum = currentNumber + currentNumber;
                             array[i, currentIndex--] = sum;
                             _scoreService.ManageCurrentScore += currentNumber;
-                            currentNumber = minValue;
+                            currentNumber = StaticData.emptySpot;
                         }
 
                         else if (currentElementIsZero)
@@ -170,11 +167,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                             currentNumber = array[i, j];
                         }
 
-                        array[i, j] = minValue;
+                        array[i, j] = StaticData.emptySpot;
                     }
                 }
 
-                if (currentNumber != minValue)
+                currentElementIsZero = currentNumber == StaticData.emptySpot;
+
+                if (!currentElementIsZero)
                 {
                     array[i, currentIndex] = currentNumber;
                 }
@@ -183,29 +182,28 @@ namespace TwoZeroFourEight.Backend.Services.Classes
         }
         public void MoveDown(int[,] array)
         {
-            _size = array.GetLength(0);
-            minValue = 0;
 
-            for (int i = 0; i < _size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
-                currentIndex = _size - 1;
+                currentIndex = StaticData.size - 1;
                 currentNumber = 0;
 
-                for (int j = _size - 1; j >= 0; j--)
+                for (int j = StaticData.size - 1; j >= 0; j--)
                 {
+                    currentElementIsNotZero = array[j, i] != StaticData.emptySpot;
 
-                    if (array[j, i] != minValue)
+                    if (currentElementIsNotZero)
                     {
                         elementsAreEqual = currentNumber == array[j, i];
 
-                        currentElementIsZero = currentNumber == minValue;
+                        currentElementIsZero = currentNumber == StaticData.emptySpot;
 
 						if (elementsAreEqual)
                         {
                             sum = currentNumber + currentNumber;
                             array[currentIndex--, i] = sum;
                             _scoreService.ManageCurrentScore += currentNumber;
-                            currentNumber = minValue;
+                            currentNumber = StaticData.emptySpot;
                         }
 
                         else if (currentElementIsZero)
@@ -219,11 +217,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                             currentNumber = array[j, i];
                         }
 
-                        array[j, i] = minValue;
+                        array[j, i] = StaticData.emptySpot;
                     }
                 }
 
-                if (currentNumber != minValue)
+                currentElementIsZero = currentNumber == StaticData.emptySpot;
+
+                if (!currentElementIsZero)
                 {
                     array[currentIndex, i] = currentNumber;
                 }

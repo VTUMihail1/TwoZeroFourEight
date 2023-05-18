@@ -15,26 +15,23 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
         public TwoZeroFourEightGameController(IGameController gameController, IInitializeBoardService initializeBoardService)
         {
             _gameController = gameController;
-
             _initializeBoardService = initializeBoardService;
         }
 
         public void Play(int size)
         {
+            StaticData.size = size;
 
-            int minSize = 4;
+            bool canPlay = StaticData.size > StaticData.minSize || StaticData.maxSize > StaticData.size;
 
-            int maxSize = 7;
-
-            bool canPlay = size > 4 || size < 7;
-
-			if (canPlay)
+            if (canPlay)
             {
-				int[,] array = _initializeBoardService.InitializeBoard(size);
+				int[,] array = _initializeBoardService.InitializeBoard();
 
 				_gameController.Start(array);
 			}
             
         }
+
     }
 }

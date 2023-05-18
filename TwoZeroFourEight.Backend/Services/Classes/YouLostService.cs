@@ -6,19 +6,16 @@ namespace TwoZeroFourEight.Backend.Services.Classes
     {
         public bool YouLost(int[,] array)
         {
-            int size = array.GetLength(0);
 
-			for (int i = 0; i < size; i++)
+			for (int i = 0; i < StaticData.size; i++)
             {
 
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < StaticData.size; j++)
                 {
 
-                    bool youLostCheckOne = j < size - 1 && array[i, j + 1] == array[i, j];
-
-                    bool youLostCheckTwo = i < size - 1 && array[i + 1, j] == array[i, j];
-
-                    bool youLostCheckThree =  array[i, j] == 0;
+                    bool youLostCheckOne = j < StaticData.size - 1 && array[i, j + 1] == array[i, j];
+                    bool youLostCheckTwo = i < StaticData.size - 1 && array[i + 1, j] == array[i, j];
+                    bool youLostCheckThree =  array[i, j] == StaticData.minTile;
 
 					if (youLostCheckOne || youLostCheckTwo || youLostCheckThree)
                     {
@@ -31,5 +28,6 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
             return true;
         }
+
     }
 }

@@ -9,25 +9,20 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
         private readonly IStateController _stateController;
 
-
         public GameEngineController(IGameMovesController gameMovesController, IStateController stateController)
         {
             _gameMovesController = gameMovesController;
-
             _stateController = stateController;
         }
-
 
         public void RunGame(int[,] array)
         {
             var key = Console.ReadKey();
 
             _gameMovesController.InputMoves(key, array);
-
             _stateController.InputStates(key, array);
 
         }
-
 
     }
 }

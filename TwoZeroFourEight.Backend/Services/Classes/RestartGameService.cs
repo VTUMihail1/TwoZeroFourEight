@@ -16,26 +16,25 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
         public void Restart(int[,] array)
         {
-            _scoreService.HighestTileScore = array.Cast<int>().Max();
+            int highestTile = array.Cast<int>().Max();
 
+            _scoreService.HighestTileScore = highestTile;
             _scoreService.ManageLastScore = _scoreService.ManageCurrentScore;
-
             _scoreService.ManageBestScore = _scoreService.ManageCurrentScore;
+            _scoreService.ManageCurrentScore = StaticData.emptySpot;
 
-            _scoreService.ManageCurrentScore = 0;
-
-            int size = array.GetLength(0);
-
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
 
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < StaticData.size; j++)
                 {
-                    array[i, j] = 0;
+                    array[i, j] = StaticData.minTile;
                 }
 
             }
+
         }
+
     }
 }
 

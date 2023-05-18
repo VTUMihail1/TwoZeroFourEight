@@ -10,14 +10,11 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
         private readonly IYouLostService _youLostService;
 
-
         public ResultController(IYouWinService youWinService, IYouLostService youLostService)
         {
             _youWinService = youWinService;
-
             _youLostService = youLostService;
         }
-
 
         public bool Result(int[,] array)
         {
@@ -25,7 +22,6 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
 
             return result;
         }
-
 
     }
 }
