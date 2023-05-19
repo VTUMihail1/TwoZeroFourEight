@@ -60,6 +60,13 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                     array[i, j] = StaticData.emptySpot;
                 }
+
+                if (elementIsNotZero(currentNumber))
+                {
+                    array[i, currentIndex] = currentNumber;
+                }
+
+                _scoreController.UpdateBestScore();
             }
         }
         public void MoveUp(int[,] array)
