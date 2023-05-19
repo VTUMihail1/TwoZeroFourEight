@@ -14,30 +14,25 @@ namespace TwoZeroFourEight.Frontend.Controllers.Classes
         public PrintResultController(IPrintStateController printStateController, ILoggerService loggerService, IPrintHeadingService printHeadingService)
         {
             _printStateController = printStateController;
-
             _loggerService = loggerService;
-
             _printHeadingService = printHeadingService;
         }
 
 
-        public void PrintGameOverScreen(int size)
+        public void PrintGameOverScreen()
         {
-            string message = _printStateController.PrintGameResult(size);
+            string message = _printStateController.PrintGameResult();
 
             bool messageIsNotNull = !string.IsNullOrEmpty(message);
 
 			if (messageIsNotNull)
             {
                 _loggerService.Clear();
-
                 _loggerService.WriteLine(message);
-
                 _loggerService.ReadKey();
-
                 _loggerService.Clear();
 
-                _printHeadingService.PrintHeading(size);
+                _printHeadingService.PrintHeading();
             }
 
         }

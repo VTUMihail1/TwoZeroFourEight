@@ -14,14 +14,8 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
 
         public void PrintMenu()
         {
-            string message = "\n\nPress UP ARROW to swipe up\n" +
-                             "Press RIGHT ARROW to swipe right\n" +
-                             "Press DOWN ARROW to swipe down\n" +
-                             "Press LEFT ARROW to swipe left\n\n" +
-                             "Press R to restart the game\n" +
-                             "Press ESC to exit\n";
 
-            _loggerService.WriteLine(message);
+            _loggerService.WriteLine(StaticData.menu);
         }
 
     }

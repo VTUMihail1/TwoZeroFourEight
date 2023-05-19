@@ -15,22 +15,17 @@ namespace TwoZeroFourEight.Frontend.Controllers.Classes
         public PrintBoardController(IPrintBoardService printBoardService, IPrintPressAnyButtonService printPressAnyButtonService, IPrintResultController printResultController)
         {
             _printPressAnyButtonService = printPressAnyButtonService;
-
             _printBoardService = printBoardService;
-
             _printResultController = printResultController;
         }
         public void PrintGameBoard(int[,] array)
         {
-            bool emptyArray = array.Cast<int>().All(tile => tile == 0);
+            bool emptyArray = array.Cast<int>().All(tile => tile == StaticData.emptySpot);
 
 			if (emptyArray)
             {
-				int size = array.GetLength(0);
-
-				_printResultController.PrintGameOverScreen(size);
-
-				_printPressAnyButtonService.PrintPressAnyButton(size);
+				_printResultController.PrintGameOverScreen();
+				_printPressAnyButtonService.PrintPressAnyButton();
             }
 
 

@@ -14,21 +14,15 @@ namespace TwoZeroFourEight.Frontend.Controllers.Classes
         public UIController(IPrintHeadingService printHeadingService, IPrintBoardController printBoardController, IPrintMenuService printMenuService)
         {
             _printHeadingService = printHeadingService;
-
             _printBoardController = printBoardController;
-
             _printMenuService = printMenuService;
         }
 
 
         public void PrintGame(int[,] array)
         {
-            int size = array.GetLength(0);
-
-            _printHeadingService.PrintHeading(size);
-
+            _printHeadingService.PrintHeading();
             _printBoardController.PrintGameBoard(array);
-
             _printMenuService.PrintMenu();
         }
 

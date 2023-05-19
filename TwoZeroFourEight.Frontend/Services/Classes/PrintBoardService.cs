@@ -1,4 +1,5 @@
-﻿using TwoZeroFourEight.Frontend.Services.Interfaces;
+﻿using System.Drawing;
+using TwoZeroFourEight.Frontend.Services.Interfaces;
 
 namespace TwoZeroFourEight.Frontend.Services.Classes
 {
@@ -11,32 +12,24 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
         public PrintBoardService(ILoggerService loggerService, IAddColorService addColorService)
         {
             _loggerService = loggerService;
-
             _addColorService = addColorService;
         }
 
 
         public void PrintBoard(int[,] array)
         {
-            int size = array.GetLength(0);
+            string fullRow = string.Concat(Enumerable.Repeat("-", StaticData.size * 9 + 1));
 
-            string fullRow = string.Concat(Enumerable.Repeat("-", size * 9 + 1));
-
-            string startOfRow = "|  ";
-
-            string midEndOfRow = "  |  ";
-
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < StaticData.size; i++)
             {
                 _loggerService.WriteLine(fullRow);
+                _loggerService.Write(StaticData.startOfRow);
 
-                _loggerService.Write(startOfRow);
-
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < StaticData.size; j++)
                 {
                     _addColorService.AddColor(array[i, j]);
 
-                    _loggerService.Write(midEndOfRow);
+                    _loggerService.Write(StaticData.midEndOfRow);
                 }
 
                 _loggerService.WriteLine();

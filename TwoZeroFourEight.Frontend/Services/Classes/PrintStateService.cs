@@ -1,4 +1,5 @@
-﻿using TwoZeroFourEight.Frontend.Services.Interfaces;
+﻿using System.Drawing;
+using TwoZeroFourEight.Frontend.Services.Interfaces;
 
 namespace TwoZeroFourEight.Frontend.Services.Classes
 {
@@ -12,9 +13,9 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
         }
 
 
-        public string YouLost(int size)
+        public string YouLost()
         {
-            string gap = string.Concat(Enumerable.Repeat(" ", (size - 4) * 9 / 2));
+            string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 4) * 9 / 2));
 
             string message = $"\n\n\n{gap}             GAME OVER \n\n" +
                              $"{gap}       SCORE FROM LAST GAME: \n" +
@@ -28,9 +29,9 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
         }
 
 
-        public string YouWin(int size)
+        public string YouWin()
         {
-            string gap = string.Concat(Enumerable.Repeat(" ", (size - 4) * 9 / 2));
+            string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 4) * 9 / 2));
 
             string message = $"\n\n\n{gap}              YOU WON \n\n\n" +
                              $"{gap}       SCORE FROM LAST GAME: \n" +

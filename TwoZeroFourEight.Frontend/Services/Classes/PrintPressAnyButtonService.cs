@@ -1,4 +1,5 @@
-﻿using TwoZeroFourEight.Frontend.Services.Interfaces;
+﻿using System.Drawing;
+using TwoZeroFourEight.Frontend.Services.Interfaces;
 
 namespace TwoZeroFourEight.Frontend.Services.Classes
 {
@@ -12,9 +13,9 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
         }
 
 
-        public void PrintPressAnyButton(int size)
+        public void PrintPressAnyButton()
         {
-            string gap = string.Concat(Enumerable.Repeat(" ", (size - 4) * 9 / 2));
+            string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 4) * 9 / 2));
 
             string message = $"\n\n{gap}          PRESS ANY ARROW \n" +
                                   $"{gap}         TO START THE GAME\n\n\n\n";

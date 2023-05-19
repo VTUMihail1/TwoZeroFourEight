@@ -43,8 +43,8 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
             printBoardController.PrintGameBoard(array);
 
-            printResultController.Verify(x => x.PrintGameOverScreen(4), Times.Exactly(1));
-            printPressAnyButtonService.Verify(x => x.PrintPressAnyButton(4), Times.Exactly(1));
+            printResultController.Verify(x => x.PrintGameOverScreen(), Times.Exactly(1));
+            printPressAnyButtonService.Verify(x => x.PrintPressAnyButton(), Times.Exactly(1));
         }
 
 

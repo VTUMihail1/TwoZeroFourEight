@@ -19,8 +19,8 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         public void Setup()
         {
             printStateService = new Mock<IPrintStateService>();
-            printStateService.Setup(x => x.YouLost(4)).Returns("YouLost");
-            printStateService.Setup(x => x.YouWin(4)).Returns("YouWon");
+            printStateService.Setup(x => x.YouLost()).Returns("YouLost");
+            printStateService.Setup(x => x.YouWin()).Returns("YouWon");
 
             scoreService = new Mock<IScoreService>();
 
@@ -33,7 +33,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         {
             scoreService.Setup(x => x.ManageBestScore).Returns(0);
 
-            string result = printStateController.PrintGameResult(4);
+            string result = printStateController.PrintGameResult();
 
             Assert.That(result.Length, Is.EqualTo(0));
         }
@@ -44,7 +44,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         {
             scoreService.Setup(x => x.ManageBestScore).Returns(2);
 
-            string result = printStateController.PrintGameResult(4);
+            string result = printStateController.PrintGameResult();
 
             Assert.That(result.Length, Is.AtLeast(1));
         }

@@ -1,16 +1,16 @@
 ﻿using TwoZeroFourEight.Backend.Services.Interfaces;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Controllers.Interfaces;
 
 namespace TwoZeroFourEight.Backend.Services.Classes
 {
     public class RestartGameService : IRestartGameService
     {
 
-        private IScoreService _scoreService;
+        private IScoreController _scoreController;
 
-        public RestartGameService(IScoreService scoreService)
+        public RestartGameService(IScoreController scoreController)
         {
-            _scoreService = scoreService;
+            _scoreController = scoreController;
         }
 
 
@@ -18,17 +18,14 @@ namespace TwoZeroFourEight.Backend.Services.Classes
         {
             int highestTile = array.Cast<int>().Max();
 
-            _scoreService.HighestTileScore = highestTile;
-            _scoreService.ManageLastScore = _scoreService.ManageCurrentScore;
-            _scoreService.ManageBestScore = _scoreService.ManageCurrentScore;
-            _scoreService.ManageCurrentScore = StaticData.emptySpot;
+            _scoreController.Calculate(highestTile);
 
             for (int i = 0; i < StaticData.size; i++)
             {
 
                 for (int j = 0; j < StaticData.size; j++)
                 {
-                    array[i, j] = StaticData.minTile;
+                    array[i, j] = StaticData.emptySpot;
                 }
 
             }

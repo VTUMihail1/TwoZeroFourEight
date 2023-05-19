@@ -21,6 +21,7 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
         public void Play(int size)
         {
             StaticData.size = size;
+            StaticData.numberOfSpots = size * size;
 
             bool canPlay = StaticData.size > StaticData.minSize || StaticData.maxSize > StaticData.size;
 

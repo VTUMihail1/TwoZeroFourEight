@@ -1,4 +1,5 @@
-﻿using TwoZeroFourEight.Frontend.Services.Interfaces;
+﻿using System.Drawing;
+using TwoZeroFourEight.Frontend.Services.Interfaces;
 
 namespace TwoZeroFourEight.Frontend.Services.Classes
 {
@@ -16,9 +17,9 @@ namespace TwoZeroFourEight.Frontend.Services.Classes
         }
 
 
-        public void PrintHeading(int size)
+        public void PrintHeading()
         {
-            string gap = string.Concat(Enumerable.Repeat(" ", (size - 1) * 9 - 6));
+            string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 1) * 9 - 6));
 
             string message = $"2048{gap}BEST SCORE: {_scoreService.ManageBestScore}\n" +
                              $"{gap}    SCORE: {_scoreService.ManageCurrentScore}\n";

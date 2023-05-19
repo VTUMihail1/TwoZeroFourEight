@@ -3,7 +3,7 @@
     public interface IPrintPressAnyButtonService
     {
 
-        void PrintPressAnyButton(int size);
+        void PrintPressAnyButton();
 
     }
 }

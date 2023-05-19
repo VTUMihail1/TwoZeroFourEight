@@ -12,27 +12,21 @@ namespace TwoZeroFourEight.Frontend.Controllers.Classes
         public PrintStateController(IPrintStateService printStateService, IScoreService scoreService)
         {
             _printStateService = printStateService;
-
             _scoreService = scoreService;
         }
 
 
-        public string PrintGameResult(int size)
+        public string PrintGameResult()
         {
-            int lowestScore = 0;
-
             string message = string.Empty;
 
-            bool bestScoreIsNotZero = _scoreService.ManageBestScore != lowestScore;
-
+            bool bestScoreIsNotZero = _scoreService.ManageBestScore != StaticData.lowestScore;
 
 			if (bestScoreIsNotZero)
             {
-                int maxTile = 2048;
-
-                message = _scoreService.HighestTileScore == maxTile
-                    ? _printStateService.YouWin(size)
-                    : _printStateService.YouLost(size);
+                message = _scoreService.HighestTileScore == StaticData.maxTile
+                    ? _printStateService.YouWin()
+                    : _printStateService.YouLost();
             }
 
             return message;

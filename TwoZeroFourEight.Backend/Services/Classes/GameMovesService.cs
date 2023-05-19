@@ -1,29 +1,27 @@
 ﻿using TwoZeroFourEight.Backend.Services.Interfaces;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Controllers.Interfaces;
 
 namespace TwoZeroFourEight.Backend.Services.Classes
 {
     public class GameMovesService : IGameMovesService
-    {
-        private int sum;
-        
+    {   
         private int currentIndex;
 
         private int currentNumber;
 
-        private bool elementsAreEqual;
+        private readonly IScoreController _scoreController;
 
-        private bool currentElementIsZero;
+        private readonly Func<int, bool> elementIsNotZero;
 
-        private bool currentElementIsNotZero;
+        private readonly Func<int, int, bool> elementsAreEqual;
 
-        private IScoreService _scoreService;
-
-        public GameMovesService(IScoreService scoreService)
+        public GameMovesService(IScoreController scoreController)
         {
-            _scoreService = scoreService;
-        }
+            _scoreController = scoreController;
 
+            elementIsNotZero = number => number != StaticData.emptySpot;
+            elementsAreEqual = (numberOne, numberTwo) => numberOne == numberTwo;
+        }
 
         public void MoveLeft(int[,] array)
         {
@@ -35,25 +33,20 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                 for (int j = 0; j < StaticData.size; j++)
                 {
-                    currentElementIsNotZero = array[i, j] != StaticData.emptySpot;
 
-                    if (currentElementIsNotZero)
+                    if (elementIsNotZero(array[i,j]))
                     {
-                        elementsAreEqual = currentNumber == array[i, j];
-                        currentElementIsZero = currentNumber == StaticData.emptySpot;
 
-						if (elementsAreEqual)
+						if (elementsAreEqual(currentNumber, array[i,j]))
                         {
-                            sum = currentNumber + currentNumber;
+							array[i, currentIndex++] = currentNumber + currentNumber;
 
-							array[i, currentIndex++] = sum;
-
-                            _scoreService.ManageCurrentScore += currentNumber;
+                            _scoreController.UpdateCurrentScore(currentNumber);
 
                             currentNumber = StaticData.emptySpot;
                         }
 
-                        else if (currentElementIsZero)
+                        else if (!elementIsNotZero(currentNumber))
                         {
                             currentNumber = array[i, j];
                         }
@@ -68,12 +61,12 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                     }
                 }
 
-                currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-                if (currentElementIsZero)
+                if (elementIsNotZero(currentNumber))
                 {
                     array[i, currentIndex] = currentNumber;
                 }
+
+                _scoreController.UpdateBestScore();
             }
         }
         public void MoveUp(int[,] array)
@@ -86,26 +79,20 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                 for (int j = 0; j < StaticData.size; j++)
                 {
-                    currentElementIsNotZero = array[j, i] != StaticData.emptySpot;
 
-                    if (currentElementIsNotZero)
+                    if (elementIsNotZero(array[j,i]))
                     {
-                        elementsAreEqual = currentNumber == array[j, i];
 
-                        currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-						if (elementsAreEqual)
+						if (elementsAreEqual(currentNumber, array[j, i]))
                         {
-                            sum = currentNumber + currentNumber;
+                            array[currentIndex++, i] = currentNumber + currentNumber;
 
-                            array[currentIndex++, i] = sum;
-
-                            _scoreService.ManageCurrentScore += currentNumber;
+                            _scoreController.UpdateCurrentScore(currentNumber);
 
                             currentNumber = StaticData.emptySpot;
                         }
 
-                        else if (currentElementIsZero)
+                        else if (!elementIsNotZero(currentNumber))
                         {
                             currentNumber = array[j, i];
                         }
@@ -120,13 +107,12 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                     }
                 }
 
-                currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-                if (!currentElementIsZero)
+                if (elementIsNotZero(currentNumber))
                 {
                     array[currentIndex, i] = currentNumber;
                 }
 
+                _scoreController.UpdateBestScore();
             }
 
         }
@@ -140,23 +126,20 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                 for (int j = StaticData.size - 1; j >= 0; j--)
                 {
-                    currentElementIsNotZero = array[i, j] != StaticData.emptySpot;
 
-                    if (currentElementIsNotZero)
+                    if (elementIsNotZero(array[i, j]))
                     {
-                        elementsAreEqual = currentNumber == array[i, j];
 
-                        currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-						if (elementsAreEqual)
+						if (elementsAreEqual(currentNumber, array[i,j]))
                         {
-                            sum = currentNumber + currentNumber;
-                            array[i, currentIndex--] = sum;
-                            _scoreService.ManageCurrentScore += currentNumber;
+                            array[i, currentIndex--] = currentNumber + currentNumber;
+
+                            _scoreController.UpdateCurrentScore(currentNumber);
+
                             currentNumber = StaticData.emptySpot;
                         }
 
-                        else if (currentElementIsZero)
+                        else if (!elementIsNotZero(currentNumber))
                         {
                             currentNumber = array[i, j];
                         }
@@ -164,6 +147,7 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                         else
                         {
                             array[i, currentIndex--] = currentNumber;
+
                             currentNumber = array[i, j];
                         }
 
@@ -171,13 +155,12 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                     }
                 }
 
-                currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-                if (!currentElementIsZero)
+                if (elementIsNotZero(currentNumber))
                 {
                     array[i, currentIndex] = currentNumber;
                 }
 
+                _scoreController.UpdateBestScore();
             }
         }
         public void MoveDown(int[,] array)
@@ -190,23 +173,20 @@ namespace TwoZeroFourEight.Backend.Services.Classes
 
                 for (int j = StaticData.size - 1; j >= 0; j--)
                 {
-                    currentElementIsNotZero = array[j, i] != StaticData.emptySpot;
 
-                    if (currentElementIsNotZero)
+                    if (elementIsNotZero(array[j, i]))
                     {
-                        elementsAreEqual = currentNumber == array[j, i];
 
-                        currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-						if (elementsAreEqual)
+						if (elementsAreEqual(currentNumber, array[j, i]))
                         {
-                            sum = currentNumber + currentNumber;
-                            array[currentIndex--, i] = sum;
-                            _scoreService.ManageCurrentScore += currentNumber;
+                            array[currentIndex--, i] = currentNumber + currentNumber;
+
+                            _scoreController.UpdateCurrentScore(currentNumber);
+
                             currentNumber = StaticData.emptySpot;
                         }
 
-                        else if (currentElementIsZero)
+                        else if (!elementIsNotZero(currentNumber))
                         {
                             currentNumber = array[j, i];
                         }
@@ -214,6 +194,7 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                         else
                         {
                             array[currentIndex--, i] = currentNumber;
+
                             currentNumber = array[j, i];
                         }
 
@@ -221,13 +202,12 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                     }
                 }
 
-                currentElementIsZero = currentNumber == StaticData.emptySpot;
-
-                if (!currentElementIsZero)
+                if (elementIsNotZero(currentNumber))
                 {
                     array[currentIndex, i] = currentNumber;
                 }
 
+                _scoreController.UpdateBestScore();
             }
         }
     }

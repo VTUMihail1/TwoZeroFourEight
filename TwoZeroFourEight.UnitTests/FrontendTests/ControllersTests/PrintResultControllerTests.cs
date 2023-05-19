@@ -33,22 +33,22 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         [Test]
         public void PrintGameOverScreen_StringIsEmpty_DoesntWriteTheResultInTheConsole()
         {
-            printStateController.Setup(x => x.PrintGameResult(4)).Returns("");
+            printStateController.Setup(x => x.PrintGameResult()).Returns("");
 
-            printResultController.PrintGameOverScreen(4);
+            printResultController.PrintGameOverScreen();
 
-            printHeadingService.Verify(x => x.PrintHeading(4), Times.Exactly(0));
+            printHeadingService.Verify(x => x.PrintHeading(), Times.Exactly(0));
         }
 
 
         [Test]
         public void PrintGameOverScreen_StringIsNotEmpty_WritesTheResultInTheConsole()
         {
-            printStateController.Setup(x => x.PrintGameResult(4)).Returns("message");
+            printStateController.Setup(x => x.PrintGameResult()).Returns("message");
 
-            printResultController.PrintGameOverScreen(4);
+            printResultController.PrintGameOverScreen();
 
-            printHeadingService.Verify(x => x.PrintHeading(4), Times.Exactly(1));
+            printHeadingService.Verify(x => x.PrintHeading(), Times.Exactly(1));
         }
     }
 }

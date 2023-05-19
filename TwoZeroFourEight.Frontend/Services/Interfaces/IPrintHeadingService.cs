@@ -3,7 +3,7 @@
     public interface IPrintHeadingService
     {
 
-        void PrintHeading(int size);
+        void PrintHeading();
 
     }
 }

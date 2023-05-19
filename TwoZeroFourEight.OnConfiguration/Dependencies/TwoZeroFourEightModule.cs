@@ -20,6 +20,7 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IYouLostService>().To<YouLostService>();
 			Bind<IGameController>().To<GameController>();
 			Bind<IAddColorService>().To<AddColorService>();
+			Bind<IScoreController>().To<ScoreController>();
 			Bind<IStateController>().To<StateController>();
 			Bind<IResultController>().To<ResultController>();
 			Bind<IPrintMenuService>().To<PrintMenuService>();

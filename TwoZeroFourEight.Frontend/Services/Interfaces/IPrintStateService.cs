@@ -3,10 +3,10 @@
     public interface IPrintStateService
     {
 
-        string YouLost(int size);
+        string YouLost();
 
 
-        string YouWin(int size);
+        string YouWin();
 
     }
 }
