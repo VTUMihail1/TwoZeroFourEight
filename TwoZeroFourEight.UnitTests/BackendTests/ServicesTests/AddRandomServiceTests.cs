@@ -12,6 +12,8 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
         [SetUp]
         public void SetUp()
         {
+            StaticData.size = 4;
+            StaticData.numberOfSpots = 16;
             addRandomService = new AddRandomService(new Random());
         }
 
@@ -19,6 +21,7 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
         [Test]
         public void AddRandomElement_WhenArrayIsntAtMaxCapacity_AddOneElementToTheArray()
         {
+
             int[,] array = new int[4, 4]
             {
                 {2,2,0,0 },

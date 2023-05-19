@@ -34,39 +34,32 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                 for (int j = 0; j < StaticData.size; j++)
                 {
 
-                    if (elementIsNotZero(array[i,j]))
+                    if (!elementIsNotZero(array[i,j]))
                     {
-
-						if (elementsAreEqual(currentNumber, array[i,j]))
-                        {
-							array[i, currentIndex++] = currentNumber + currentNumber;
-
-                            _scoreController.UpdateCurrentScore(currentNumber);
-
-                            currentNumber = StaticData.emptySpot;
-                        }
-
-                        else if (!elementIsNotZero(currentNumber))
-                        {
-                            currentNumber = array[i, j];
-                        }
-
-                        else
-                        {
-                            array[i, currentIndex++] = currentNumber;
-                            currentNumber = array[i, j];
-                        }
-
-                        array[i, j] = StaticData.emptySpot;
+                        continue;
                     }
-                }
+                    if (elementsAreEqual(currentNumber, array[i, j]))
+                    {
+                        array[i, currentIndex++] = currentNumber + currentNumber;
 
-                if (elementIsNotZero(currentNumber))
-                {
-                    array[i, currentIndex] = currentNumber;
-                }
+                        _scoreController.UpdateCurrentScore(currentNumber);
 
-                _scoreController.UpdateBestScore();
+                        currentNumber = StaticData.emptySpot;
+                    }
+
+                    else if (!elementIsNotZero(currentNumber))
+                    {
+                        currentNumber = array[i, j];
+                    }
+
+                    else
+                    {
+                        array[i, currentIndex++] = currentNumber;
+                        currentNumber = array[i, j];
+                    }
+
+                    array[i, j] = StaticData.emptySpot;
+                }
             }
         }
         public void MoveUp(int[,] array)
@@ -80,31 +73,31 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                 for (int j = 0; j < StaticData.size; j++)
                 {
 
-                    if (elementIsNotZero(array[j,i]))
+                    if (!elementIsNotZero(array[j,i]))
                     {
-
-						if (elementsAreEqual(currentNumber, array[j, i]))
-                        {
-                            array[currentIndex++, i] = currentNumber + currentNumber;
-
-                            _scoreController.UpdateCurrentScore(currentNumber);
-
-                            currentNumber = StaticData.emptySpot;
-                        }
-
-                        else if (!elementIsNotZero(currentNumber))
-                        {
-                            currentNumber = array[j, i];
-                        }
-
-                        else
-                        {
-                            array[currentIndex++, i] = currentNumber;
-                            currentNumber = array[j, i];
-                        }
-
-                        array[j, i] = StaticData.emptySpot;
+                        continue;
                     }
+                    if (elementsAreEqual(currentNumber, array[j, i]))
+                    {
+                        array[currentIndex++, i] = currentNumber + currentNumber;
+
+                        _scoreController.UpdateCurrentScore(currentNumber);
+
+                        currentNumber = StaticData.emptySpot;
+                    }
+
+                    else if (!elementIsNotZero(currentNumber))
+                    {
+                        currentNumber = array[j, i];
+                    }
+
+                    else
+                    {
+                        array[currentIndex++, i] = currentNumber;
+                        currentNumber = array[j, i];
+                    }
+
+                    array[j, i] = StaticData.emptySpot;
                 }
 
                 if (elementIsNotZero(currentNumber))
@@ -127,32 +120,32 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                 for (int j = StaticData.size - 1; j >= 0; j--)
                 {
 
-                    if (elementIsNotZero(array[i, j]))
+                    if (!elementIsNotZero(array[i, j]))
                     {
-
-						if (elementsAreEqual(currentNumber, array[i,j]))
-                        {
-                            array[i, currentIndex--] = currentNumber + currentNumber;
-
-                            _scoreController.UpdateCurrentScore(currentNumber);
-
-                            currentNumber = StaticData.emptySpot;
-                        }
-
-                        else if (!elementIsNotZero(currentNumber))
-                        {
-                            currentNumber = array[i, j];
-                        }
-
-                        else
-                        {
-                            array[i, currentIndex--] = currentNumber;
-
-                            currentNumber = array[i, j];
-                        }
-
-                        array[i, j] = StaticData.emptySpot;
+                        continue;
                     }
+                    if (elementsAreEqual(currentNumber, array[i, j]))
+                    {
+                        array[i, currentIndex--] = currentNumber + currentNumber;
+
+                        _scoreController.UpdateCurrentScore(currentNumber);
+
+                        currentNumber = StaticData.emptySpot;
+                    }
+
+                    else if (!elementIsNotZero(currentNumber))
+                    {
+                        currentNumber = array[i, j];
+                    }
+
+                    else
+                    {
+                        array[i, currentIndex--] = currentNumber;
+
+                        currentNumber = array[i, j];
+                    }
+
+                    array[i, j] = StaticData.emptySpot;
                 }
 
                 if (elementIsNotZero(currentNumber))
@@ -174,32 +167,32 @@ namespace TwoZeroFourEight.Backend.Services.Classes
                 for (int j = StaticData.size - 1; j >= 0; j--)
                 {
 
-                    if (elementIsNotZero(array[j, i]))
+                    if (!elementIsNotZero(array[j, i]))
                     {
-
-						if (elementsAreEqual(currentNumber, array[j, i]))
-                        {
-                            array[currentIndex--, i] = currentNumber + currentNumber;
-
-                            _scoreController.UpdateCurrentScore(currentNumber);
-
-                            currentNumber = StaticData.emptySpot;
-                        }
-
-                        else if (!elementIsNotZero(currentNumber))
-                        {
-                            currentNumber = array[j, i];
-                        }
-
-                        else
-                        {
-                            array[currentIndex--, i] = currentNumber;
-
-                            currentNumber = array[j, i];
-                        }
-
-                        array[j, i] = StaticData.emptySpot;
+                        continue;
                     }
+                    if (elementsAreEqual(currentNumber, array[j, i]))
+                    {
+                        array[currentIndex--, i] = currentNumber + currentNumber;
+
+                        _scoreController.UpdateCurrentScore(currentNumber);
+
+                        currentNumber = StaticData.emptySpot;
+                    }
+
+                    else if (!elementIsNotZero(currentNumber))
+                    {
+                        currentNumber = array[j, i];
+                    }
+
+                    else
+                    {
+                        array[currentIndex--, i] = currentNumber;
+
+                        currentNumber = array[j, i];
+                    }
+
+                    array[j, i] = StaticData.emptySpot;
                 }
 
                 if (elementIsNotZero(currentNumber))

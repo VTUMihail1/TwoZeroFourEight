@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using TwoZeroFourEight.Backend.Services.Classes;
 using TwoZeroFourEight.Backend.Services.Interfaces;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Controllers.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 {
@@ -14,9 +14,10 @@ namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
         [SetUp]
         public void SetUp()
         {
-            var scoreService = new Mock<IScoreService>();
+            StaticData.size = 4;
+            var scoreController = new Mock<IScoreController>();
 
-            gameMovesService = new GameMovesService(scoreService.Object);
+            gameMovesService = new GameMovesService(scoreController.Object);
         }
 
 
