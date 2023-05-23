@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using TwoZeroFourEight.Frontend.Services.Classes;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Score.Classes;
+using TwoZeroFourEight.Frontend.Score.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.FrontendTests.ServicesTests
 {

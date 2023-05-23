@@ -1,8 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
-using TwoZeroFourEight.Frontend.Controllers.Classes;
-using TwoZeroFourEight.Frontend.Controllers.Interfaces;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Board.Classes;
+using TwoZeroFourEight.Frontend.Board.Interfaces;
+using TwoZeroFourEight.Frontend.State.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 {

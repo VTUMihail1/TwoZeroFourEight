@@ -1,8 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using TwoZeroFourEight.Backend.Controllers.Classes;
-using TwoZeroFourEight.Backend.Services.Interfaces;
-using TwoZeroFourEight.Backend.Controllers.Interfaces;
+using TwoZeroFourEight.Backend.Moves.Classes;
+using TwoZeroFourEight.Backend.Moves.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.BackendTests.ControllersTests
 {

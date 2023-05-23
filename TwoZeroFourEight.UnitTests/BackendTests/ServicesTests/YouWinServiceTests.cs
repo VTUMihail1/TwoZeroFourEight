@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using TwoZeroFourEight.Backend.Services.Classes;
-using TwoZeroFourEight.Backend.Services.Interfaces;
+using TwoZeroFourEight.Backend.State.Classes;
+using TwoZeroFourEight.Backend.State.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.BackendTests.ServicesTests
 {

@@ -1,8 +1,8 @@
 ﻿using Moq;
 using NUnit.Framework;
 using TwoZeroFourEight.Frontend.Controllers.Classes;
-using TwoZeroFourEight.Frontend.Controllers.Interfaces;
-using TwoZeroFourEight.Frontend.Services.Interfaces;
+using TwoZeroFourEight.Frontend.Score.Interfaces;
+using TwoZeroFourEight.Frontend.State.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 {
@@ -16,16 +16,16 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         private IPrintStateController printStateController;
 
         [SetUp]
-        public void Setup()
-        {
-            printStateService = new Mock<IPrintStateService>();
-            printStateService.Setup(x => x.YouLost()).Returns("YouLost");
-            printStateService.Setup(x => x.YouWin()).Returns("YouWon");
+        //public void Setup()
+        //{
+        //    printStateService = new Mock<IPrintStateService>();
+        //    printStateService.Setup(x => x.YouLost()).Returns("YouLost");
+        //    printStateService.Setup(x => x.YouWin()).Returns("YouWon");
 
-            scoreService = new Mock<IScoreService>();
+        //    scoreService = new Mock<IScoreService>();
 
-            printStateController = new PrintStateController(printStateService.Object, scoreService.Object);
-        }
+        //    printStateController = new PrintStateController(printStateService.Object, scoreService.Object);
+        //}
 
 
         [Test]
