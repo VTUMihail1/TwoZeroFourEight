@@ -1,4 +1,5 @@
 ﻿using TwoZeroFourEight.Backend.Add.Interfaces;
+using TwoZeroFourEight.Exceptions.Exceptions;
 
 namespace TwoZeroFourEight.Backend.Add.Classes
 {
@@ -14,23 +15,37 @@ namespace TwoZeroFourEight.Backend.Add.Classes
 
         public void AddRandomElement(int[,] array)
         {
-
-            int random = _random.Next(StaticData.numberOfSpots);
-
-            bool arrayIsEmpty = array.Cast<int>().Any(tile => tile == StaticData.emptySpot);
-
-            while (arrayIsEmpty)
+            try
             {
-                random = _random.Next(StaticData.numberOfSpots);
+                bool invalidSize = StaticData.numberOfSpots == 0 || StaticData.numberOfSpots == 0;
 
-                bool freeSpot = array[random / StaticData.size, random % StaticData.size] == StaticData.emptySpot;
-
-                if (freeSpot)
+                if (invalidSize)
                 {
-                    array[random / StaticData.size, random % StaticData.size] = StaticData.minTile;
-
-                    return;
+                    throw new InvalidSizeException("Invalid size");
                 }
+
+                int random = _random.Next(StaticData.numberOfSpots);
+
+                bool arrayIsEmpty = array.Cast<int>().Any(tile => tile == StaticData.emptySpot);
+
+                while (arrayIsEmpty)
+                {
+                    random = _random.Next(StaticData.numberOfSpots);
+
+                    bool freeSpot = array[random / StaticData.size, random % StaticData.size] == StaticData.emptySpot;
+
+                    if (freeSpot)
+                    {
+                        array[random / StaticData.size, random % StaticData.size] = StaticData.minTile;
+
+                        return;
+                    }
+
+                }
+            }
+
+            catch(InvalidSizeException)
+            {
 
             }
 

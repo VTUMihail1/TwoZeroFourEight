@@ -1,4 +1,5 @@
 ﻿using TwoZeroFourEight.Backend.Board.Interfaces;
+using TwoZeroFourEight.Exceptions.Exceptions;
 
 namespace TwoZeroFourEight.Backend.Board.Classes
 {
@@ -7,9 +8,24 @@ namespace TwoZeroFourEight.Backend.Board.Classes
 
         public int[,] InitializeBoard()
         {
-            int[,] array = new int[StaticData.size, StaticData.size];
+            try
+            {
+                bool cantPlay = StaticData.size < StaticData.minSize || StaticData.maxSize < StaticData.size;
 
-            return array;
+                if (cantPlay)
+                {
+                    throw new InvalidSizeException("Invalid size");
+                }
+
+                int[,] array = new int[StaticData.size, StaticData.size];
+
+                return array;
+            }
+
+            catch(InvalidSizeException)
+            {
+                return null;
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using TwoZeroFourEight.Backend.Board.Interfaces;
 using TwoZeroFourEight.Backend.Controllers.Interfaces;
+using TwoZeroFourEight.Exceptions.Exceptions;
 
 namespace TwoZeroFourEight.Backend.Controllers.Classes
 {
@@ -20,13 +21,24 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
             StaticData.size = size; 
             StaticData.numberOfSpots = size * size;
 
-            bool canPlay = StaticData.size > StaticData.minSize || StaticData.maxSize > StaticData.size;
-
-            if (canPlay)
+            
+            try
             {
+                bool cantPlay = StaticData.size < StaticData.minSize || StaticData.maxSize < StaticData.size;
+
+                if (cantPlay)
+                {
+                    throw new InvalidSizeException("Invalid size");
+                }
+
                 int[,] array = _initializeBoardService.InitializeBoard();
 
                 _gameController.Start(array);
+            }
+
+            catch(InvalidSizeException)
+            {
+
             }
         }
     }

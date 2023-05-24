@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using TwoZeroFourEight.Exceptions.Exceptions;
 using TwoZeroFourEight.Frontend.Heading.Interfaces;
 using TwoZeroFourEight.Frontend.Logger.Interfaces;
 using TwoZeroFourEight.Frontend.Score.Interfaces;
@@ -21,14 +22,28 @@ namespace TwoZeroFourEight.Frontend.Heading.Classes
 
         public void PrintHeading()
         {
-            string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 1) * 9 - 6));
+            try
+            {
+                int gapSize = StaticData.size - 4;
 
-            string message = $"2048{gap}BEST SCORE: {_scoreService.ManageBestScore}\n" +
-                             $"{gap}    SCORE: {_scoreService.ManageCurrentScore}\n";
+                if (gapSize < 0)
+                {
+                    throw new InvalidSizeException("Invalid size");
+                }
 
-            _loggerService.Clear();
+                string gap = string.Concat(Enumerable.Repeat(" ", (StaticData.size - 1) * 9 - 6));
 
-            _loggerService.WriteLine(message);
+                string message = $"2048{gap}BEST SCORE: {_scoreService.ManageBestScore}\n" +
+                                 $"{gap}    SCORE: {_scoreService.ManageCurrentScore}\n";
+
+                _loggerService.Clear();
+
+                _loggerService.WriteLine(message);
+            }
+            catch(InvalidSizeException)
+            {
+
+            }
         }
 
     }
