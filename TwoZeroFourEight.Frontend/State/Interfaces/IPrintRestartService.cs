@@ -3,7 +3,7 @@
     /// <summary>
     /// Service class responsible for printing the restart message and resetting the game.
     /// </summary>
-    public interface IPrintRestart
+    public interface IPrintRestartService
     {
         /// <summary>
         /// Restarts the game with the specified message.

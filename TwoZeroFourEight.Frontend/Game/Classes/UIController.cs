@@ -21,11 +21,11 @@ namespace TwoZeroFourEight.Frontend.Controllers.Classes
         }
 
 
-        public void PrintGame(int[,] array)
+        public void Print(int[,] array)
         {
-            _printHeadingService.PrintHeading();
-            _printBoardController.PrintGameBoard(array);
-            _printMenuService.PrintMenu();
+            _printHeadingService.Print();
+            _printBoardController.Print(array);
+            _printMenuService.Print();
         }
 
     }

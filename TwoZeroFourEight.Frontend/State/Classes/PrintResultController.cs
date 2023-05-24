@@ -4,26 +4,26 @@ namespace TwoZeroFourEight.Frontend.State.Classes
 {
     public class PrintResultController : IPrintResultController
     {
-        private readonly IPrintRestart _printRestart;
+        private readonly IPrintRestartService _printRestartService;
 
         private readonly IPrintStateController _printStateController;
 
-        public PrintResultController(IPrintRestart printRestart, IPrintStateController printStateController)
+        public PrintResultController(IPrintRestartService printRestartService, IPrintStateController printStateController)
         {
-            _printRestart = printRestart;
+            _printRestartService = printRestartService;
             _printStateController = printStateController;
         }
 
 
-        public void PrintGameOverScreen()
+        public void Print()
         {
-            string message = _printStateController.PrintGameResult();
+            string message = _printStateController.Print();
 
             bool messageIsNotNull = !string.IsNullOrEmpty(message);
 
             if (messageIsNotNull)
             {
-                _printRestart.Restart(message);
+                _printRestartService.Restart(message);
             }
 
         }

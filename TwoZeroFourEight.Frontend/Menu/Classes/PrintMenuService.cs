@@ -13,7 +13,7 @@ namespace TwoZeroFourEight.Frontend.Menu.Classes
         }
 
 
-        public void PrintMenu()
+        public void Print()
         {
 
             _loggerService.WriteLine(StaticData.menu);

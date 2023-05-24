@@ -8,7 +8,7 @@
         /// <summary>
         /// Prints the game over screen and handles the game result.
         /// </summary>
-        void PrintGameOverScreen();
+        void Print();
 
     }
 }

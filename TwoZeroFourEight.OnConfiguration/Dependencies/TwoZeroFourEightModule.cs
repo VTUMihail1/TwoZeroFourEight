@@ -40,7 +40,7 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 		{
 			Bind<Random>().ToSelf().InSingletonScope();
 			Bind<IUIController>().To<UIController>().InSingletonScope();
-			Bind<IPrintRestart>().To<PrintRestart>().InSingletonScope();
+			Bind<IPrintRestartService>().To<PrintRestartService>().InSingletonScope();
 			Bind<IScoreService>().To<ScoreService>().InSingletonScope();
 			Bind<IYouWinService>().To<YouWinService>().InSingletonScope();
 			Bind<ILoggerService>().To<LoggerService>().InSingletonScope();
@@ -53,7 +53,7 @@ namespace TwoZeroFourEight.OnConfigurationFolder.Dependencies
 			Bind<IPrintMenuService>().To<PrintMenuService>().InSingletonScope();
 			Bind<IGameMovesService>().To<GameMovesService>().InSingletonScope();
 			Bind<IAddRandomService>().To<AddRandomService>().InSingletonScope();
-			Bind<IPrintResultState>().To<PrintResultState>().InSingletonScope();
+			Bind<IPrintResultStateService>().To<PrintResultStateService>().InSingletonScope();
 			Bind<IState>().To<PrintYouWin>().InSingletonScope().Named("YouWin");
             Bind<IState>().To<PrintYouLose>().InSingletonScope().Named("YouLost");
 			Bind<IPrintBoardService>().To<PrintBoardService>().InSingletonScope();

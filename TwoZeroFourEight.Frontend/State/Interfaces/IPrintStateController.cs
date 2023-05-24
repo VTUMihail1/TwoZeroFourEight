@@ -9,7 +9,7 @@
         /// Prints the game result and returns the result message.
         /// </summary>
         /// <returns>The game result message.</returns>
-        string PrintGameResult();
+        string Print();
 
     }
 }

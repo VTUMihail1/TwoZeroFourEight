@@ -20,7 +20,7 @@ namespace TwoZeroFourEight.Frontend.Heading.Classes
         }
 
 
-        public void PrintHeading()
+        public void Print()
         {
             try
             {

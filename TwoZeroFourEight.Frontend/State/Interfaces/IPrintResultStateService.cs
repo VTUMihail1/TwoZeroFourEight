@@ -3,7 +3,7 @@
     /// <summary>
     /// Class responsible for selecting and printing the result state.
     /// </summary>
-    public interface IPrintResultState
+    public interface IPrintResultStateService
     {
         /// <summary>
         /// Prints the result using the selected state.

@@ -2,7 +2,7 @@
 
 namespace TwoZeroFourEight.Frontend.State.Classes
 {
-    public class PrintResultState : IPrintResultState
+    public class PrintResultStateService : IPrintResultStateService
     {
         private IState _state;
 

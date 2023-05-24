@@ -21,7 +21,7 @@ namespace TwoZeroFourEight.Backend.Controllers.Classes
         {
             while (true)
             {
-                _uiController.PrintGame(array);
+                _uiController.Print(array);
                 _gameEngineController.RunGame(array);
             }
 

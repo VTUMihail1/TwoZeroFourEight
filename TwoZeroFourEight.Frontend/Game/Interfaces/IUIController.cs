@@ -9,7 +9,7 @@
         /// Prints the game user interface, including the heading, game board, and menu.
         /// </summary>
         /// <param name="array">The two-dimensional array representing the game board.</param>
-        void PrintGame(int[,] array);
+        void Print(int[,] array);
 
     }
 }

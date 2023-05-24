@@ -9,7 +9,7 @@
         /// <summary>
         /// Prints the "Press any button" message.
         /// </summary>
-        void PrintPressAnyButton();
+        void Print();
 
     }
 }

@@ -13,7 +13,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
         private Mock<IScoreService> scoreService;
 
-        private Mock<IPrintResultState> printResultState;
+        private Mock<IPrintResultStateService> printResultState;
 
         private IPrintStateController printStateController;
 
@@ -22,7 +22,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         {
             printStateService = new Mock<IPrintStateService>();
 
-            printResultState = new Mock<IPrintResultState>();
+            printResultState = new Mock<IPrintResultStateService>();
 
             scoreService = new Mock<IScoreService>();
 
@@ -31,23 +31,23 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
 
         [Test]
-        public void PrintGameResult_BestScoreIsZero_ReturnsEmptyString()
+        public void Print_BestScoreIsZero_ReturnsEmptyString()
         {
             scoreService.Setup(x => x.ManageBestScore).Returns(0);
 
-            string result = printStateController.PrintGameResult();
+            string result = printStateController.Print();
 
             Assert.That(result.Length, Is.EqualTo(0));
         }
 
 
         [Test]
-        public void PrintGameResult_BestScoreIsHigherThanZero_ReturnsNonEmptyString()
+        public void Print_BestScoreIsHigherThanZero_ReturnsNonEmptyString()
         {
             scoreService.Setup(x => x.ManageBestScore).Returns(2);
             printResultState.Setup(x => x.Print()).Returns("message");
 
-            string result = printStateController.PrintGameResult();
+            string result = printStateController.Print();
 
             Assert.That(result.Length, Is.EqualTo(7));
         }

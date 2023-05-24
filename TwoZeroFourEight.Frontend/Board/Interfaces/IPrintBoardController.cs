@@ -9,7 +9,7 @@
         /// Prints the game board.
         /// </summary>
         /// <param name="array">The two-dimensional array representing the game board.</param>
-        void PrintGameBoard(int[,] array);
+        void Print(int[,] array);
 
     }
 }

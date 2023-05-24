@@ -9,7 +9,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
     public class PrintResultControllerTests
     {
 
-        private Mock<IPrintRestart> printRestart;
+        private Mock<IPrintRestartService> printRestartService;
 
         private Mock<IPrintStateController> printStateController;
 
@@ -20,31 +20,31 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         {
             printStateController = new Mock<IPrintStateController>();
 
-            printRestart = new Mock<IPrintRestart>();
+            printRestartService = new Mock<IPrintRestartService>();
 
-            printResultController = new PrintResultController(printRestart.Object, printStateController.Object);
+            printResultController = new PrintResultController(printRestartService.Object, printStateController.Object);
         }
 
 
         [Test]
-        public void PrintGameOverScreen_StringIsEmpty_DoesntWriteTheResultInTheConsole()
+        public void Print_StringIsEmpty_DoesntWriteTheResultInTheConsole()
         {
-            printStateController.Setup(x => x.PrintGameResult()).Returns("");
+            printStateController.Setup(x => x.Print()).Returns("");
 
-            printResultController.PrintGameOverScreen();
+            printResultController.Print();
 
-            printRestart.Verify(x => x.Restart(""), Times.Exactly(0));
+            printRestartService.Verify(x => x.Restart(""), Times.Exactly(0));
         }
 
 
         [Test]
-        public void PrintGameOverScreen_StringIsNotEmpty_WritesTheResultInTheConsole()
+        public void Print_StringIsNotEmpty_WritesTheResultInTheConsole()
         {
-            printStateController.Setup(x => x.PrintGameResult()).Returns("message");
+            printStateController.Setup(x => x.Print()).Returns("message");
 
-            printResultController.PrintGameOverScreen();
+            printResultController.Print();
 
-            printRestart.Verify(x => x.Restart("message"), Times.Exactly(1));
+            printRestartService.Verify(x => x.Restart("message"), Times.Exactly(1));
         }
     }
 }

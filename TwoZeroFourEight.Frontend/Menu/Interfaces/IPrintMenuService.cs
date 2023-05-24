@@ -8,7 +8,7 @@
         /// <summary>
         /// Prints the game menu.
         /// </summary>
-        void PrintMenu();
+        void Print();
 
     }
 }

@@ -18,7 +18,7 @@ namespace TwoZeroFourEight.Frontend.Board.Classes
         }
 
 
-        public void PrintBoard(int[,] array)
+        public void Print(int[,] array)
         {
             string fullRow = string.Concat(Enumerable.Repeat("-", StaticData.size * 9 + 1));
 

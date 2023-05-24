@@ -14,7 +14,7 @@ namespace TwoZeroFourEight.Frontend.State.Classes
             _loggerService = loggerService;
         }
 
-        public void PrintPressAnyButton()
+        public void Print()
         {
             try
             {

@@ -8,7 +8,7 @@
         /// <summary>
         /// Prints the game heading, including the current score and best score.
         /// </summary>
-        void PrintHeading();
+        void Print();
 
     }
 }

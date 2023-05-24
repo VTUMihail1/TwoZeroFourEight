@@ -4,11 +4,11 @@ using TwoZeroFourEight.Frontend.State.Interfaces;
 
 namespace TwoZeroFourEight.Frontend.State.Classes
 {
-    public class PrintRestart : IPrintRestart
+    public class PrintRestartService : IPrintRestartService
     {
         private readonly ILoggerService _loggerService;
         private readonly IPrintHeadingService _printHeadingService;
-        public PrintRestart(ILoggerService loggerService, IPrintHeadingService printHeadingService)
+        public PrintRestartService(ILoggerService loggerService, IPrintHeadingService printHeadingService)
         {
             _loggerService = loggerService;
             _printHeadingService = printHeadingService;
@@ -21,7 +21,7 @@ namespace TwoZeroFourEight.Frontend.State.Classes
             _loggerService.ReadKey();
             _loggerService.Clear();
 
-            _printHeadingService.PrintHeading();
+            _printHeadingService.Print();
         }
     }
 }

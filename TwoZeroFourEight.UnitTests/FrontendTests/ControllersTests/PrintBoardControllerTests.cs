@@ -31,7 +31,7 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
 
         [Test]
-        public void PrintGameBoard_ArrayIsEmpty_PrintsTheBoard()
+        public void Print_ArrayIsEmpty_PrintsTheBoard()
         {
             int[,] array = new int[4, 4]
             {
@@ -41,15 +41,15 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
                 {0,0,0,0 }
             };
 
-            printBoardController.PrintGameBoard(array);
+            printBoardController.Print(array);
 
-            printResultController.Verify(x => x.PrintGameOverScreen(), Times.Exactly(1));
-            printPressAnyButtonService.Verify(x => x.PrintPressAnyButton(), Times.Exactly(1));
+            printResultController.Verify(x => x.Print(), Times.Exactly(1));
+            printPressAnyButtonService.Verify(x => x.Print(), Times.Exactly(1));
         }
 
 
         [Test]
-        public void PrintGameBoard_ArrayIsNotEmpty_PrintsTheBoard()
+        public void Print_ArrayIsNotEmpty_PrintsTheBoard()
         {
             int[,] array = new int[4, 4]
             {
@@ -59,9 +59,9 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
                 {0,0,0,0 }
             };
 
-            printBoardController.PrintGameBoard(array);
+            printBoardController.Print(array);
 
-            printBoardService.Verify(x => x.PrintBoard(array), Times.Exactly(1));
+            printBoardService.Verify(x => x.Print(array), Times.Exactly(1));
         }
     }
 }

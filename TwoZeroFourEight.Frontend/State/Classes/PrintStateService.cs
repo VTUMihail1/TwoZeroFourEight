@@ -10,20 +10,20 @@ namespace TwoZeroFourEight.Frontend.State.Classes
 
         private readonly IState _youLost;
 
-        private readonly IPrintResultState _printResultState;
+        private readonly IPrintResultStateService _printResultStateService;
 
-        public PrintStateService([Named("YouWin")] IState youWin, [Named("YouLost")] IState youLost, IPrintResultState printResultState)
+        public PrintStateService([Named("YouWin")] IState youWin, [Named("YouLost")] IState youLost, IPrintResultStateService printResultStateService)
         {
             _youWin = youWin;
             _youLost = youLost;
-            _printResultState = printResultState;
+            _printResultStateService = printResultStateService;
         }
 
         public void Strategy(int maxTile)
         {
             IState result = maxTile == StaticData.maxTile ? _youWin : _youLost;
 
-            _printResultState.Select(result);
+            _printResultStateService.Select(result);
         }
 
     }
