@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using TwoZeroFourEight.Frontend.Controllers.Classes;
 using TwoZeroFourEight.Frontend.Score.Interfaces;
+using TwoZeroFourEight.Frontend.State.Classes;
 using TwoZeroFourEight.Frontend.State.Interfaces;
 
 namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
@@ -13,19 +13,21 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
 
         private Mock<IScoreService> scoreService;
 
+        private Mock<IPrintResultState> printResultState;
+
         private IPrintStateController printStateController;
 
         [SetUp]
-        //public void Setup()
-        //{
-        //    printStateService = new Mock<IPrintStateService>();
-        //    printStateService.Setup(x => x.YouLost()).Returns("YouLost");
-        //    printStateService.Setup(x => x.YouWin()).Returns("YouWon");
+        public void Setup()
+        {
+            printStateService = new Mock<IPrintStateService>();
 
-        //    scoreService = new Mock<IScoreService>();
+            printResultState = new Mock<IPrintResultState>();
 
-        //    printStateController = new PrintStateController(printStateService.Object, scoreService.Object);
-        //}
+            scoreService = new Mock<IScoreService>();
+
+            printStateController = new PrintStateController(printResultState.Object, scoreService.Object, printStateService.Object);
+        }
 
 
         [Test]
@@ -43,10 +45,11 @@ namespace TwoZeroFourEight.UnitTests.FrontendTests.ControllersTests
         public void PrintGameResult_BestScoreIsHigherThanZero_ReturnsNonEmptyString()
         {
             scoreService.Setup(x => x.ManageBestScore).Returns(2);
+            printResultState.Setup(x => x.Print()).Returns("message");
 
             string result = printStateController.PrintGameResult();
 
-            Assert.That(result.Length, Is.AtLeast(1));
+            Assert.That(result.Length, Is.EqualTo(7));
         }
     }
 }
